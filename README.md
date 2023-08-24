@@ -1,4 +1,4 @@
-Proyecyo Front End para gestionar las credenciales web de todos los empleados de UltraFibra. El mismo se encuentra desarrollado con Angular y conectado a su api BackEnd desarrollada con SpringBot. Este proyecto cumple la funcion de aprnedizaje y familiarizacion con el Framework Angular. 
+Proyecto Front End para gestionar las credenciales web de todos los empleados de UltraFibra. El mismo se encuentra desarrollado con Angular y conectado a su api BackEnd desarrollada con SpringBot. Este proyecto cumple la funcion de aprnedizaje y familiarizacion con el Framework Angular. 
 
 
 # PasswordManagerFrontEnd
