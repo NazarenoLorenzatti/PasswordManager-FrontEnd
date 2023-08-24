@@ -1,0 +1,172 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.columna-izquierda {
+  flex: 1.75;
+  padding: 20px;
+}
+
+.columna-derecha {
+  margin-top: 80px;
+  flex: 1;
+  padding: 20px;
+}
+
+.info-perfil {
+  display: flex;
+  justify-content: space-around;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 110px;
+}
+
+.credenciales {
+  padding: 20px;
+  margin-top: 20px;
+  display: block;
+}
+
+.lista {
+  padding-left: 60px;
+}
+
+.linea{
+  padding-bottom: 10px;
+  /*border-bottom: 4px dotted #7b1fa2;*/
+  margin-bottom: 30px;
+}
+
+.label {
+  color: #ad42da;
+  text-decoration: underline;
+  text-decoration-color: rgb(255, 255, 255);
+  text-underline-offset: 6px;
+  padding-bottom: 5px;
+  font-size: 22px;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  letter-spacing: 4px;
+  font-weight: bold;
+}
+
+.valor {
+  margin-left: 20px;
+  font-size: 20px;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  letter-spacing: 3px;
+  font-style: italic;
+  text-align: center;
+}
+
+.foto-perfil {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.img {
+  margin-top: 30px;
+  padding: 60px;
+  background-color: black;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.user {
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.pass {
+  width: 100%;
+}
+
+.etiqueta {
+  margin-left: 20px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-right: 8px;
+}
+
+.botones {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+}
+
+.recuadro{
+  background-color: #424242;
+  padding: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+.contadores{
+  margin-left: 60px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .container {
+      flex-direction: row;
+  }
+  
+}
+
+
+@media screen and (max-width: 767px) {
+  .container {
+      flex-direction: column;
+  }
+
+  .lista{
+    padding: 0px 0px 0px 15px;
+    margin-left: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .info-perfil{
+    padding-top: 40px;
+    padding-left: 50px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .columna-derecha{
+    margin-top: 10px;
+    width: 90%;
+    order: 1;
+    flex: 1;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .columna-izquierda{
+    width: 90%;
+    flex: 1;
+    order: 2;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .credenciales{
+    text-align: center;
+  }
+
+  .recuadro{
+    margin-left: 20px;
+    padding: 10px;
+  }
+
+  .contadores{
+    margin-left: 30px;
+  }
+
+}
+

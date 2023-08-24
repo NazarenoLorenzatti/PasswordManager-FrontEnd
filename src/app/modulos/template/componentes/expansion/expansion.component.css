@@ -1,0 +1,31 @@
+.mat-mdc-form-field+.mat-mdc-form-field {
+    margin-left: 8px;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.link-aplicacion {
+    flex-grow: 2;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.botones {
+    display: flex;
+    gap: 10px;
+
+}
+
+a {
+    color: white;
+}
+
+mat-panel-title {
+    font-size: 22px;
+    text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}

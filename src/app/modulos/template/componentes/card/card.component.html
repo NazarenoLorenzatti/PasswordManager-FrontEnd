@@ -1,0 +1,41 @@
+<mat-card *ngFor="let c of listaDeCredenciales" class="card-container">
+  <mat-card-header>
+    <mat-card-title> {{c.aplicacion.nombreAplicacion}}</mat-card-title>
+    <mat-card-subtitle>{{c.estadoCredencial.nombreCredencial}} </mat-card-subtitle>
+    <div class="fecha">
+      <h3>Vencimiento:</h3>
+      <p> {{c.proximaActualizacion}} </p>
+    </div>
+  </mat-card-header>
+  <div class="container-cred">
+    <div class="usuario">
+      <div class="label">
+        <p>USUARIO: </p>
+      </div>
+      <div class="value">
+        <p> {{c.usuario}}</p>
+      </div>
+    </div>
+    <div class="contra">
+      <div class="label">
+        <p> PASSWORD: </p>
+      </div>
+      <div class="value">
+        <p>{{c.contra}} </p>
+      </div>
+      <button mat-icon-button  matTooltip="Basic" ><mat-icon>visibility</mat-icon></button>
+    </div>
+  </div>
+  <mat-card-actions>
+    <div class="botones">
+      <div>
+          <button mat-icon-button>
+              <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn">
+            <mat-icon aria-label="Delete">delete</mat-icon>
+        </button>
+      </div>
+  </div>
+  </mat-card-actions>
+</mat-card>

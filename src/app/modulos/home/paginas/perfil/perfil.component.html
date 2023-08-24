@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="columna-izquierda">
+        <div class="info-perfil">
+            <div class="lista">
+                <div class="linea">
+                    <b class="label">Nombre:</b>
+                    <span class="valor">{{nombre}}</span>
+                </div>
+                <div class="linea">
+                    <b class="label">Apellido:</b>
+                    <span class="valor">{{apellido}}</span>
+                </div>
+                <div class="linea">
+                    <b class="label">Mail:</b>
+                    <span class="valor">{{email}}</span>
+                </div>
+                <div class="linea">
+                    <b class="label">Telefono:</b>
+                    <span class="valor">{{telefono}}</span>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <br/>
+        <div class="contadores">
+            <contadores-selector></contadores-selector>
+        </div>
+    </div>
+    <div class="columna-derecha">
+        <div class="recuadro">
+            <div>
+                <button mat-button>
+                    <mat-icon>add_to_photos</mat-icon>
+                    Subir Foto
+                  </button>
+            </div>
+            <div class="foto-perfil">
+                <div class="img">
+                    <img src="#">
+                </div>
+            </div>
+            <div class="credenciales">
+                <div class="user">
+                    <b class="etiqueta">Usuario:</b>
+                    <Span>{{username}}</Span>
+                </div>
+                <div class="pass">
+                    <b class="etiqueta">Contraseña:</b>
+                    <span>{{password}}</span>
+                </div>
+            </div>
+        </div>
+            <div class="botones">
+                <div class="btn-editar">
+                    <button mat-fab extended color="primary">
+                        <mat-icon>edit</mat-icon>
+                       Editar
+                      </button>
+                </div>
+                <div class="btn-eliminar">
+                    <button mat-button>
+                        <mat-icon>delete_forever</mat-icon>
+                        Eliminar
+                      </button>
+                </div>
+                
+            </div>
+       
+    </div>
+</div>

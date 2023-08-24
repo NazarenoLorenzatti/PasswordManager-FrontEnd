@@ -1,0 +1,78 @@
+<div class="login-container" [class.is-mobile]="pantallaCelu.matches">
+
+    <!-- ESTO ES EL NAV BAR -->
+    <mat-toolbar color="primary" class="dashboard-toolbar">
+        <button mat-icon-button (click)="snav.toggle()">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <h1 class="app-nombre">Inventario</h1>
+
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <ul fxLayout="row" fxLayoutGap="20px">
+                <li>
+                    <button mat-icon-button>
+                        <mat-icon>help_outline</mat-icon>
+                    </button>
+                </li>
+                <li>
+                    <!-- Es para que cuando hago click en el boton de persona me muestra un minimenu con cerrar sesion-->
+                    <button mat-button [matMenuTriggerFor]="menu">
+                        <!--[matMenuTriggerFor]="menu" enlaca con lo q sigue-->
+                        <mat-icon>person_outline</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu"> <!-- ENLAZA CON ESTO-->
+                        <button mat-menu-item>
+                            <mat-icon>exit_to_app</mat-icon>
+                            Cerrar Sesion
+                        </button>
+                    </mat-menu>
+                </li>
+            </ul>
+        </div>
+
+    </mat-toolbar>
+
+    <!-- ESTO ES EL SIDENAV-->
+    <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="pantallaCelu.matches ? 56 : 0">
+        <!-- 
+        [style.marginTop.px] Directiva para asignar un margin top, la variable declarada pantallaCelu establece el 
+    tamanio de la pantalla. entonces bajo esta directiva si la pantalla es menor a 600px le asigna el margin top de 56 px sino no le asigna nada-->
+
+        <mat-sidenav #snav [mode]="pantallaCelu.matches? 'over': 'side' " [fixedInViewport]="pantallaCelu.matches"
+            fixedTopGap="56"> <!-- con esto se muestra la barra latera "sidenav" si estamos en un dispositivo mobile-->
+            <mat-nav-list>
+                <div class="profile-card">
+                    <div class="header">
+                        <div class="img-container">
+                            <div class="img-div">
+                                <img src="#">
+                            </div>
+                        </div>
+                        <h2>Nazareno Lorenzatti</h2>
+                        <h4>nl.loragro@gmail.com</h4>
+                    </div>
+                </div>
+
+                <mat-divider></mat-divider>
+
+                <a mat-list-item [routerLink]="nav.ruta" *ngFor="let nav of menuNav">
+                    <mat-icon class="icono"> {{nav.icono}}</mat-icon>
+                    {{nav.name}}
+
+                </a>
+
+            </mat-nav-list>
+
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+
+            <router-outlet></router-outlet>
+
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+
+
+</div>

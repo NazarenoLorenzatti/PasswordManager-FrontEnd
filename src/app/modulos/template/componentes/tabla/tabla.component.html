@@ -1,0 +1,41 @@
+<div class="table-container-component">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 tabla-custom">
+
+        <!-- Id de aplicacion -->
+        <ng-container matColumnDef="id">
+            <th class="th-color" mat-header-cell *matHeaderCellDef> No. </th>
+            <td class="td-color" mat-cell *matCellDef="let element"> {{element.idAplicacion}} </td>
+        </ng-container>
+
+        <!-- Aplicacion -->
+        <ng-container matColumnDef="Aplicacion">
+            <th  mat-header-cell *matHeaderCellDef> Aplicacion</th>
+            <td  mat-cell *matCellDef="let element"> {{element.nombreAplicacion}} </td>
+        </ng-container>
+  
+        <!-- Link a la aplicacion -->
+        <ng-container matColumnDef="Link">
+            <th  mat-header-cell *matHeaderCellDef> Link </th>
+            <td  mat-cell *matCellDef="let element"> <a href="{{element.url}}">Ir a la App</a></td>
+        </ng-container>
+
+        <!-- Botones -->
+        <ng-container matColumnDef="Acciones">
+            <th  mat-header-cell *matHeaderCellDef> Acciones </th>
+
+            <td mat-cell *matCellDef="let element; let i=index;">
+                <button mat-icon-button>
+                    <mat-icon aria-label="Edit">edit</mat-icon>
+                </button>
+
+                <button mat-icon-button color="warn">
+                    <mat-icon aria-label="Delete">delete</mat-icon>
+                </button>
+            </td>
+
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columnasTabla"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnasTabla;"></tr>
+    </table>
+</div>

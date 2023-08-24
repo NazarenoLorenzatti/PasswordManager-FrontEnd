@@ -1,0 +1,29 @@
+<div>
+    <mat-accordion *ngFor="let a of listaDeAplicaciones">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{a.idAplicacion}} ~ {{a.nombreAplicacion}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="contenedor">
+                <div class="link-aplicacion">
+                    <a href="{{a.url}}" mat-flat-button  color="primary"> Ir a la App<mat-icon>vertical_align_top</mat-icon></a>
+                </div>
+                <div class="botones">
+                    <div>
+                        <button mat-icon-button>
+                            <mat-icon aria-label="Edit">edit</mat-icon>
+                        </button>
+                    </div>
+                    <div>
+                        <button mat-icon-button color="warn">
+                            <mat-icon aria-label="Delete">delete</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+        <br />
+    </mat-accordion>
+</div>

@@ -1,0 +1,85 @@
+
+@import "~font-awesome/css/font-awesome.css";
+
+.div-tarjetas{
+    display: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    align-items: center;
+}
+
+.efecto-texto {
+    text-shadow: 2px 2px 4px #8D19A4;
+    animation: shadow-slide 2s infinite;
+}
+
+@keyframes shadow-slide {
+    0% {
+        text-shadow: 2px 2px 4px #000000;
+    }
+    50% {
+        text-shadow: 8px 8px 12px #000000;
+    }
+    100% {
+        text-shadow: 2px 2px 4px #000000;
+    }
+}
+
+.titulo {
+    margin-top: 30px;
+    flex: 1;
+    text-align: left;
+    font-size: 25px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.botones {
+    flex: 1;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.div-tabla {
+    width: 80%;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 800px) {
+    .header {
+        flex-direction: column;
+        /* Cambiar a column para dispositivos móviles */
+    }
+
+    .botones {
+        text-align: center;
+        /* Centrar los botones en dispositivos móviles */
+        padding-right: 0;
+        /* Eliminar el padding derecho */
+    }
+
+    .div-tarjetas{
+        margin-top: 30px;
+        width: 100%;
+        display: block;
+    }
+
+    .div-tabla {
+        display: none;
+    }
+
+
+}
