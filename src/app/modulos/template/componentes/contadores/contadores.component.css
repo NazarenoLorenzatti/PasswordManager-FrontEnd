@@ -7,9 +7,13 @@
 
 p, h2 {
   margin-bottom: 0px;
+  margin-top: 0px;
 }
 
-
+h5{
+  margin-top: 0px;
+  margin-bottom: 15px;
+}
 .contador {
   position: relative;
 	border-top: 10px solid white;
@@ -62,6 +66,10 @@ p, h2 {
 
 
 @media screen and (max-width: 767px) {
+h5{
+  margin-bottom: 15px;
+}
+
   .container-contadores {
     padding: 0px;
     margin-top: 10px;
@@ -73,6 +81,9 @@ p, h2 {
     border-radius: 50%;
     /* Agrega una sombra */
   }
+  .contador-numero {
+    padding-bottom: 15px;
+  }    
 
   .label{
     font-size: 12px;

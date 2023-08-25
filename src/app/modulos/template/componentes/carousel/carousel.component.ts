@@ -9,13 +9,13 @@ import { MediaMatcher } from '@angular/cdk/layout';
 })
 export class CarouselComponent implements OnInit {
 
-  
   private credencialService = inject(CredencialService);
   pantallaCelu: MediaQueryList;
-  listaDeCredenciales: any[] = []; 
+  listaDeCredenciales: any[] = [];
   anchoPantalla: number;
+  slides: any[] = [];
 
-  slides: any[] = new Array(3).fill({id: -1, src: '', title: '', subtitle: ''});
+  contador: number = 0;
 
   constructor(media: MediaMatcher) {
     this.anchoPantalla = window.innerWidth; // Obtener el ancho inicial de la ventana
@@ -28,29 +28,7 @@ export class CarouselComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.slides[0] = {
-      id: 0,
-      src: './assets/img/angular.jpg',
-      title: 'First slide',
-      subtitle: 'Nulla vitae elit libero, a pharetra augue mollis interdum.'
-    };
-    this.slides[1] = {
-      id: 1,
-      src: './assets/img/react.jpg',
-      title: 'Second slide',
-      subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    }
-    this.slides[2] = {
-      id: 2,
-      src: './assets/img/vue.jpg',
-      title: 'Third slide',
-      subtitle: 'Praesent commodo cursus magna, vel scelerisque nisl consectetur.'
-    }
     this.obtenerCredencialPorAdministrativo(1);
-    this.listaDeCredenciales.forEach(c => {
-      
-      
-    });
   }
 
   obtenerCredencialPorAdministrativo(idAdministrativo: number): void {
@@ -62,12 +40,60 @@ export class CarouselComponent implements OnInit {
   }
 
   procesarResponse(resp: any) {
- 
+
     if (resp.metadata[0].codigo == "00") {
       this.listaDeCredenciales = resp.credencialResponse.credencial;
-      console.log("LISTA DE CREDENCIALES", this.listaDeCredenciales);
-    }
 
+      let grupo1Credenciales: any[] = [];
+      let grupo2Credenciales: any[] = [];
+      let grupo3Credenciales: any[] = [];
+      let grupo4Credenciales: any[] = [];
+      let grupo5Credenciales: any[] = [];
+      let grupo6Credenciales: any[] = [];
+      let grupo7Credenciales: any[] = [];
+
+      for (let i = 0; i < this.listaDeCredenciales.length; i++) {
+        if (i >= 0 && i <= 3) {          
+          grupo1Credenciales.push(this.listaDeCredenciales[i]);
+        } else if (i >= 4 && i <= 7) {
+          grupo2Credenciales.push(this.listaDeCredenciales[i]);
+        } else if (i >= 8 && i <= 11) {
+          grupo3Credenciales.push(this.listaDeCredenciales[i]);
+        } else if (i >= 12 && i <= 15) {
+          grupo4Credenciales.push(this.listaDeCredenciales[i]);
+        } else if (i >= 16 && i <= 19) {
+          grupo5Credenciales.push(this.listaDeCredenciales[i]);
+        } else if (i >= 20 && i <= 23) {
+          grupo6Credenciales.push(this.listaDeCredenciales[i]);
+        } else if (i >= 24 && i <= 27) {
+          grupo7Credenciales.push(this.listaDeCredenciales[i]);
+        }
+      }
+
+      if(grupo1Credenciales.length > 0){
+        this.slides.push(grupo1Credenciales);
+      }
+      if(grupo2Credenciales.length > 0){
+        this.slides.push(grupo2Credenciales);
+      }
+      if(grupo3Credenciales.length > 0){
+        this.slides.push(grupo3Credenciales);
+      }
+      if(grupo4Credenciales.length > 0){
+        this.slides.push(grupo4Credenciales);
+      }
+      if(grupo5Credenciales.length > 0){
+        this.slides.push(grupo5Credenciales);
+      }
+      if(grupo6Credenciales.length > 0){
+        this.slides.push(grupo6Credenciales);
+      }
+      if(grupo7Credenciales.length > 0){
+        this.slides.push(grupo7Credenciales);
+      }
+
+    }
+    console.log("SLIDES", this.slides);
   }
 
 }

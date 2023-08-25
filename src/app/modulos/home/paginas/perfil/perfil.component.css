@@ -1,18 +1,26 @@
 .container {
   display: flex;
+  width: 100%;
+  height: 100%;
   justify-content: space-between;
   align-items: flex-start;
 }
 
 .columna-izquierda {
+  width: 70%;
+  height: 100%;
   flex: 1.75;
   padding: 20px;
 }
 
 .columna-derecha {
-  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   flex: 1;
-  padding: 20px;
+  width: 30%;
+  height: 100%;
 }
 
 .info-perfil {
@@ -23,9 +31,7 @@
   padding-top: 110px;
 }
 
-.credenciales {
-  padding: 20px;
-  margin-top: 20px;
+.credenciales { 
   display: block;
 }
 
@@ -33,7 +39,7 @@
   padding-left: 60px;
 }
 
-.linea{
+.linea {
   padding-bottom: 10px;
   /*border-bottom: 4px dotted #7b1fa2;*/
   margin-bottom: 30px;
@@ -61,6 +67,8 @@
 }
 
 .foto-perfil {
+  height: 200px;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,8 +76,8 @@
 }
 
 .img {
-  margin-top: 30px;
-  padding: 60px;
+  width: 70%;
+  height: 70%;
   background-color: black;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.6);
 }
@@ -97,38 +105,49 @@
   align-items: flex-start;
 }
 
-.recuadro{
+.recuadro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 60%;
+  width: 80%;
   background-color: #424242;
   padding: 15px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
 
-.contadores{
+.btn-subir-foto{
+  width: 100%;
+  height: 15%;
+}
+
+.contadores {
   margin-left: 60px;
 }
 
 
 @media screen and (min-width: 768px) {
   .container {
-      flex-direction: row;
+    flex-direction: row;
   }
-  
+
 }
 
 
 @media screen and (max-width: 767px) {
   .container {
-      flex-direction: column;
+    flex-direction: column;
   }
 
-  .lista{
+  .lista {
     padding: 0px 0px 0px 15px;
     margin-left: 20px;
     align-items: center;
     justify-content: center;
   }
 
-  .info-perfil{
+  .info-perfil {
     padding-top: 40px;
     padding-left: 50px;
     align-items: center;
@@ -136,7 +155,7 @@
     margin-bottom: 40px;
   }
 
-  .columna-derecha{
+  .columna-derecha {
     margin-top: 10px;
     width: 90%;
     order: 1;
@@ -146,7 +165,7 @@
     justify-content: center;
   }
 
-  .columna-izquierda{
+  .columna-izquierda {
     width: 90%;
     flex: 1;
     order: 2;
@@ -155,18 +174,17 @@
     justify-content: center;
   }
 
-  .credenciales{
+  .credenciales {
     text-align: center;
   }
 
-  .recuadro{
+  .recuadro {
     margin-left: 20px;
     padding: 10px;
   }
 
-  .contadores{
+  .contadores {
     margin-left: 30px;
   }
 
 }
-

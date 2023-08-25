@@ -1,19 +1,55 @@
-<c-carousel>
-    <c-carousel-indicators></c-carousel-indicators>
-    <c-carousel-inner>
-      <c-carousel-item *ngFor="let slide of slides">
-        <img
-          alt="{{slide.title}}"
-          class="d-block w-100"
-          loading="lazy"
-          src="{{slide.src}}"
-        />
-        <c-carousel-caption class="d-none d-md-block">
-          <h3>{{slide.title}}</h3>
-          <p>{{slide.subtitle}}</p>
-        </c-carousel-caption>
-      </c-carousel-item>
-    </c-carousel-inner>
-    <c-carousel-control [routerLink] caption="Previous" direction="prev"></c-carousel-control>
-    <c-carousel-control [routerLink] caption="Next" direction="next"></c-carousel-control>
-  </c-carousel>
+<div class="carousel-container">
+    <igx-carousel>
+        <igx-slide *ngFor="let s of slides">
+            <div *ngFor="let c of s" class="div-credencial">
+                <div class="cred-izq">
+                    <div class="aplicacion">
+                        <h3>{{c.aplicacion.nombreAplicacion}}</h3>
+                    </div>
+                    <div class="user-pass">
+                        <div class="usuario">
+                            <div class="label">
+                                <p>USUARIO: </p>
+                            </div>
+                            <div class="value">
+                                <p> {{c.usuario}}</p>
+                            </div>
+                        </div>
+                        <div class="contra">
+                            <div class="label">
+                                <p> PASSWORD: </p>
+                            </div>
+                            <div class="value">
+                                <p type="password">{{c.contra}} </p>
+                            </div>
+                            <button mat-icon-button matTooltip="Basic"><mat-icon>visibility</mat-icon></button>
+                        </div>
+                    </div>
+                    <div class="botones">
+                        <div class="btn">
+                            <button mat-icon-button>
+                                <mat-icon aria-label="Edit">edit</mat-icon>
+                            </button>                          
+                        </div>
+                        <div class="btn">
+                            <button mat-icon-button color="warn">
+                                <mat-icon aria-label="Delete">delete</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="cred-der">
+                    <div class="img">
+                        <img src="../assets/imagenes/sin-imagen.png" alt="Mi Imagen" />
+                    </div>
+                    <div class="link">
+                        <a href="#">IR A LA APP</a>
+                    </div>
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </igx-slide>
+    </igx-carousel>
+</div>

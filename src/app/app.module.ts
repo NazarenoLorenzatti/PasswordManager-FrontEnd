@@ -8,22 +8,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './modulos/login/login.module';
 import { HomeModule } from './modulos/home/home.module';
 
-
-
-
+//I keep the new line
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,    
+    AppRoutingModule,
     BrowserAnimationsModule,
-// Modulos creados por mi
+    // Modulos creados por mi
     LoginModule,
-    HomeModule,
+    HomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

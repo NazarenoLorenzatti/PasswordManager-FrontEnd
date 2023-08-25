@@ -1,6 +1,8 @@
 
 @import "~font-awesome/css/font-awesome.css";
-
+h5{
+    margin:0px;
+}
 .div-tarjetas{
     display: none;
 }
@@ -39,7 +41,7 @@
 }
 
 .titulo {
-    margin-top: 30px;
+    margin-top: 20px;
     flex: 1;
     text-align: left;
     font-size: 25px;

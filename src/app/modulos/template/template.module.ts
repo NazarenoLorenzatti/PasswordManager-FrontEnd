@@ -17,6 +17,16 @@ import { ContadoresComponent } from './componentes/contadores/contadores.compone
 import { HttpClientModule } from '@angular/common/http';
 import { CarouselComponent } from './componentes/carousel/carousel.component';
 import { CarouselModule } from '@coreui/angular';
+import { 
+	IgxCarouselModule,
+	IgxListModule,
+	IgxInputGroupModule,
+	IgxIconModule,
+	IgxButtonModule
+ } from "igniteui-angular";
+
+
+
 
 
 @NgModule({
@@ -37,7 +47,7 @@ import { CarouselModule } from '@coreui/angular';
     TablaComponent,
     CarouselComponent,
     ContadoresComponent,
-    CarouselModule
+    CarouselModule,
   ],
   imports: [
     RouterModule,
@@ -51,7 +61,12 @@ import { CarouselModule } from '@coreui/angular';
     MatBadgeModule, 
     MatIconModule,
     HttpClientModule,
-    CarouselModule
+    CarouselModule,
+    IgxCarouselModule,
+    IgxListModule,
+    IgxInputGroupModule,
+    IgxIconModule,
+    IgxButtonModule
   ]
 })
 export class TemplateModule { }
