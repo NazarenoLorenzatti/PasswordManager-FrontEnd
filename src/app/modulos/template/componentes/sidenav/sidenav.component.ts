@@ -1,5 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AdministrativoService } from '../../servicios/administrativos/administrativo-service.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -8,28 +9,42 @@ import { Component } from '@angular/core';
 })
 export class SidenavComponent {
 
+  private administrativoService = inject(AdministrativoService);
+
+  nombre: string = '';
+  apellido: string = '';
+  email: string = '';
+  telefono: string = '';
+  username: string = '';
+  password: string = '';
+
   pantallaCelu: MediaQueryList;
   menuNav = [
     {
       name: "Pagina Principal", 
       ruta: "pagina-principal",
-      icono: "category"
+      icono: "home"
     },
     {
       name: "Aplicaciones", 
       ruta: "aplicaciones",
-      icono: "category"
+      icono: "airplay"
     },
     {
       name: "Administrativo", 
       ruta: "perfil",
-      icono: "production_quantity_limits"
+      icono: "face"
     },
     {
       name: "Credenciales", 
       ruta: "credenciales",
-      icono: "home"
+      icono: "lock"
     },
+    {
+      name: "Cerrar Sesion",
+      ruta: "credenciales",
+      icono:"exit_to_app"
+    }
   ]
 
   constructor(media : MediaMatcher){
@@ -37,6 +52,27 @@ export class SidenavComponent {
   }
 
   ngOnInit(): void{
+    this.obtenerAdministrativo(1);
+  }
 
+  obtenerAdministrativo(idAdministrativo: number): void{
+    this.administrativoService.buscarAdministrativo(idAdministrativo).subscribe((data: any) => {      
+      this.procesarResponse(data);
+      console.log("ADMINISTRATIVO", data);
+    }, (error: any) => {
+      console.log("Error", error);
+    })
+
+  }
+
+  procesarResponse(resp: any) { 
+    if (resp.metadata[0].codigo == "00") {
+      this.nombre = resp.administrativoResponse.administrativo[0].nombre;
+      this.apellido = resp.administrativoResponse.administrativo[0].apellido;
+      this.email = resp.administrativoResponse.administrativo[0].email;
+      this.telefono = resp.administrativoResponse.administrativo[0].telefono;
+      this.username = resp.administrativoResponse.administrativo[0].usuario.username;
+      this.password = resp.administrativoResponse.administrativo[0].usuario.password;
+    }
   }
 }

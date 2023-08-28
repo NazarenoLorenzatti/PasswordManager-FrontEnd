@@ -6,15 +6,10 @@
             <mat-icon>menu</mat-icon>
         </button>
 
-        <h4 class="app-nombre">Inventario</h4>
+        <h6 class="app-nombre">Credenciales UltraFibra</h6>
 
         <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
             <ul fxLayout="row" fxLayoutGap="20px">
-                <li>
-                    <button mat-icon-button>
-                        <mat-icon>help_outline</mat-icon>
-                    </button>
-                </li>
                 <li>
                     <!-- Es para que cuando hago click en el boton de persona me muestra un minimenu con cerrar sesion-->
                     <button mat-button [matMenuTriggerFor]="menu">
@@ -22,7 +17,7 @@
                         <mat-icon>person_outline</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu"> <!-- ENLAZA CON ESTO-->
-                        <button mat-menu-item>
+                        <button  mat-menu-item>
                             <mat-icon>exit_to_app</mat-icon>
                             Cerrar Sesion
                         </button>
@@ -45,33 +40,22 @@
                 <div class="profile-card">
                     <div class="header">
                         <div class="img-container">
-                            <div class="img-div">
-                                <img src="#">
-                            </div>
+                            <img class="img" src="../assets/imagenes/sin-foto.jpg" alt="Mi Imagen" />
                         </div>
-                        <h5>Nazareno Lorenzatti</h5>
-                        <h6>nl.loragro@gmail.com</h6>
+                        <h5>{{nombre}} {{apellido}}</h5>
+                        <p>{{email}}</p>
                     </div>
                 </div>
-
                 <mat-divider></mat-divider>
-
                 <a mat-list-item [routerLink]="nav.ruta" *ngFor="let nav of menuNav">
                     <mat-icon class="icono"> {{nav.icono}}</mat-icon>
                     {{nav.name}}
-
                 </a>
-
             </mat-nav-list>
-
         </mat-sidenav>
-
         <mat-sidenav-content>
-
             <router-outlet></router-outlet>
-
         </mat-sidenav-content>
-
     </mat-sidenav-container>
 
 
