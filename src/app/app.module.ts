@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginModule } from './modulos/login/login.module';
 import { HomeModule } from './modulos/home/home.module';
 
+
 //I keep the new line
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeModule } from './modulos/home/home.module';
     BrowserAnimationsModule,
     // Modulos creados por mi
     LoginModule,
-    HomeModule
+    HomeModule,
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]
