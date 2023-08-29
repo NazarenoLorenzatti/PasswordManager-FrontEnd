@@ -39,11 +39,6 @@ export class SidenavComponent {
       name: "Credenciales", 
       ruta: "credenciales",
       icono: "lock"
-    },
-    {
-      name: "Cerrar Sesion",
-      ruta: "credenciales",
-      icono:"exit_to_app"
     }
   ]
 

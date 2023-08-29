@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NuevaAplicacionModalComponent } from './nueva-aplicacion-modal.component';
 
-import { NuevaAplicacionModalComponent } from './NuevaAplicacionModalComponent';
 
 describe('NuevaAplicacionModalComponent', () => {
   let component: NuevaAplicacionModalComponent;

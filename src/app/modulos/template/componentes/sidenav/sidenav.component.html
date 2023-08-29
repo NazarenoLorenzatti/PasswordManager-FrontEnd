@@ -17,7 +17,7 @@
                         <mat-icon>person_outline</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu"> <!-- ENLAZA CON ESTO-->
-                        <button  mat-menu-item>
+                        <button mat-menu-item>
                             <mat-icon>exit_to_app</mat-icon>
                             Cerrar Sesion
                         </button>
@@ -51,6 +51,12 @@
                     <mat-icon class="icono"> {{nav.icono}}</mat-icon>
                     {{nav.name}}
                 </a>
+
+                <a class="cerrar-sesion" mat-list-item href="#" color="warn">
+                    <mat-icon class="icono" color="warn"> exit_to_app</mat-icon>
+                    Cerrar Sesion
+                </a>
+
             </mat-nav-list>
         </mat-sidenav>
         <mat-sidenav-content>

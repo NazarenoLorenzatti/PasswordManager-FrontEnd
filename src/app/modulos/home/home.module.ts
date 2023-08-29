@@ -9,22 +9,30 @@ import { PaginaPrincipalComponent } from './paginas/pagina-principal/pagina-prin
 import { MaterialModule } from '../template/material.module';
 import { NuevaAplicacionModalComponent } from './paginas/aplicaciones/nueva-aplicacion-modal/nueva-aplicacion-modal.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditarAplicacionModalComponent } from './paginas/aplicaciones/editar-aplicacion-modal/editar-aplicacion-modal.component';
+import { TablaComponent } from '../template/componentes/tabla/tabla.component';
+
 
 
 @NgModule({
   declarations: [
     NuevaAplicacionModalComponent,
+    EditarAplicacionModalComponent,
     DashboardComponent,   
     AplicacionesComponent,
     PerfilComponent,    
     CredencialesComponent,
-    PaginaPrincipalComponent,
+    PaginaPrincipalComponent,    
   ],
   imports: [
     CommonModule,
     TemplateModule,
     MaterialModule,
-    ReactiveFormsModule 
-  ]
+    ReactiveFormsModule,
+
+  ],
+  providers: [
+    TablaComponent
+  ],
 })
 export class HomeModule { }
