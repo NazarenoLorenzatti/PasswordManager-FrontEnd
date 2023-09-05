@@ -1,10 +1,22 @@
-.carousel-container {
-    width: 95%;
-    height: 95%;
-    margin: 16px auto;
+
+.slidex1{
+    display: none;
 }
 
-h3, p{
+.btn-nueva{
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    width: 95%;
+    height: 8%;  
+}
+.carousel-container {
+    width: 95%;
+    height: 88%;
+    margin: 8px auto;
+}
+
+h4, p{
     margin: 0px;
 }
 
@@ -23,12 +35,11 @@ a{
      text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
 }
 
-img {
-    width: 100%; 
-    height: 100%;
-    background-color: white;
+.mostrar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
-
 
 :host ::ng-deep { 
 
@@ -115,35 +126,80 @@ img {
         letter-spacing: 2px;
         font-style: italic;
         font-size: 25px;
-        text-decoration: underline;
-        text-decoration-color: #ad42da;
-        text-underline-offset: 4px;
     }
 
     .value{
         text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
         padding-left: 5px;
-    }
-
-    .img{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 43%;
-        width: 85%;
-        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.6);
-    } 
+    }  
 
     .link{
         display: flex;
         justify-content: flex-end;
         align-items: flex-end;
-        height: 60%;
+        height: 40%;
         width: 90%;
         padding-bottom: 5px;
         
     }
 
+    .vigencia{
+        width: 80%;
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+
+    .div-icono{
+        display: flex;
+        justify-content: flex-end;
+        height: 40%;
+        width: 100%;
+    }
+
+    .icono-vigencia{
+        height: 50px;
+        width: 50px;
+        font-size: 50px;
+    }
+
+}
+
+.slidex4{
+    display: block;
+}
+
+@media screen and (max-width: 800px) {
+    .slidex4{
+        display: none;
+    }
+
+    .slidex1{
+        display: block;
+    }
+
+    igx-carousel {   
+        transform: rotate(-90deg); /* Gira cada diapositiva -90 grados */
+        width: 100%;
+        height: 100%;
+        padding-left: 8%;
+        padding-right: 8%;
+    }
+
+    igx-slide{
+        width: 100%;
+    }
     
+    .div-credencial{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        transform: rotate(+90deg); /* Gira cada diapositiva -90 grados */
+        width: 90%; /* Ancho de cada div dentro de la cuadrícula */
+        height: 90%; /* Altura de cada div dentro de la cuadrícula */
+    }
+
+
 
 }

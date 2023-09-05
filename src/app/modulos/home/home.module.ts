@@ -11,6 +11,8 @@ import { NuevaAplicacionModalComponent } from './paginas/aplicaciones/nueva-apli
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditarAplicacionModalComponent } from './paginas/aplicaciones/editar-aplicacion-modal/editar-aplicacion-modal.component';
 import { TablaComponent } from '../template/componentes/tabla/tabla.component';
+import { EditarCredencialModalComponent } from './paginas/credenciales/editar-credencial-modal/editar-credencial-modal.component';
+import { NuevaCredencialModalComponent } from './paginas/credenciales/nueva-credencial-modal/nueva-credencial-modal.component';
 
 
 
@@ -18,6 +20,8 @@ import { TablaComponent } from '../template/componentes/tabla/tabla.component';
   declarations: [
     NuevaAplicacionModalComponent,
     EditarAplicacionModalComponent,
+    EditarCredencialModalComponent,
+    NuevaCredencialModalComponent,
     DashboardComponent,   
     AplicacionesComponent,
     PerfilComponent,    

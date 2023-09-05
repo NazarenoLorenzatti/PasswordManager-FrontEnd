@@ -4,6 +4,7 @@ import { PaginaLoginComponent } from './paginas/pagina-login/pagina-login.compon
 import { LoginComponente } from './componente/login-componente.component';
 import { TemplateModule } from '../template/template.module';
 import { RegistroUsuarioComponent } from './paginas/registro-usuario/registro-usuario.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,9 @@ import { RegistroUsuarioComponent } from './paginas/registro-usuario/registro-us
   ],
   imports: [
     CommonModule,
-    TemplateModule
+    TemplateModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class LoginModule { }

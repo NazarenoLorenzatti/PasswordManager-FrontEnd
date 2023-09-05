@@ -24,9 +24,7 @@ import {
 	IgxIconModule,
 	IgxButtonModule
  } from "igniteui-angular";
-
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -66,7 +64,9 @@ import {
     IgxListModule,
     IgxInputGroupModule,
     IgxIconModule,
-    IgxButtonModule
+    IgxButtonModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class TemplateModule { }

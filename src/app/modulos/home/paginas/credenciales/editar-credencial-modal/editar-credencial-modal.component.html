@@ -1,0 +1,25 @@
+<h2 mat-dialog-title> Editar Credencial</h2>
+<mat-dialog-content>
+    <form [formGroup]="credencialForm">
+        <div class="container">
+            <mat-form-field hidden>
+                <input matInput placeholder="Nombre Aplicacion" formControlName="idCredencial"  />               
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="URL de la Aplicacion" formControlName="usuarioAplicacion" required/>               
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="URL de la Aplicacion" formControlName="contraAplicacion" required/>               
+            </mat-form-field>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button color="primary" (click)="onSave()" [disabled]="credencialForm.invalid">
+        <mat-icon>save</mat-icon> Guardar
+    </button>
+    <button mat-button color="warn" (click)="onCancel()">
+        <mat-icon>cancel</mat-icon> Cancelar
+    </button>
+</mat-dialog-actions>

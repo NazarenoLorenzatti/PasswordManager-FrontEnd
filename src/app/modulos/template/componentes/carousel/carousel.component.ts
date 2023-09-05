@@ -1,6 +1,10 @@
 import { Component, HostListener, OnInit, inject } from '@angular/core';
 import { CredencialService } from '../../servicios/credenciales/credencial-service.service';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import { EditarCredencialModalComponent } from '../../../home/paginas/credenciales/editar-credencial-modal/editar-credencial-modal.component';
+import { NuevaCredencialModalComponent } from 'src/app/modulos/home/paginas/credenciales/nueva-credencial-modal/nueva-credencial-modal.component';
 
 @Component({
   selector: 'app-carousel',
@@ -9,13 +13,18 @@ import { MediaMatcher } from '@angular/cdk/layout';
 })
 export class CarouselComponent implements OnInit {
 
+  password: string = ''; // Propiedad para almacenar la contraseña
+  showPassword: boolean = false; // Indicador para mostrar/ocultar la contraseña
+
   private credencialService = inject(CredencialService);
   pantallaCelu: MediaQueryList;
   listaDeCredenciales: any[] = [];
   anchoPantalla: number;
-  slides: any[] = [];
-
+  slides: any[] = []; 
+  public dialog = inject(MatDialog);
+  public aviso = inject(MatSnackBar); // Para mostrar avisos dinamicos
   contador: number = 0;
+  
 
   constructor(media: MediaMatcher) {
     this.anchoPantalla = window.innerWidth; // Obtener el ancho inicial de la ventana
@@ -40,9 +49,14 @@ export class CarouselComponent implements OnInit {
   }
 
   procesarResponse(resp: any) {
-
+    this.slides = [];
     if (resp.metadata[0].codigo == "00") {
       this.listaDeCredenciales = resp.credencialResponse.credencial;
+
+        // Agrega la propiedad 'contraVisible' a cada credencial
+    this.listaDeCredenciales.forEach(credencial => {
+      credencial.contraVisible = false;
+    });
 
       let grupo1Credenciales: any[] = [];
       let grupo2Credenciales: any[] = [];
@@ -94,6 +108,61 @@ export class CarouselComponent implements OnInit {
 
     }
     console.log("SLIDES", this.slides);
+  }
+
+  abrirModalNueva(): void {
+    const dialogRef = this.dialog.open(NuevaCredencialModalComponent, {
+      width: '550px',   
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result == 1 ){
+        this.mostrarAviso("Se guardo la Credencial", "Exito");    
+        this.obtenerCredencialPorAdministrativo(1);    
+      }else if(result == 2){
+        this.mostrarAviso("Error al guardar la Credencial", "Error");
+      }
+    });
+  }
+
+  abrirModalEditar(credencial:any): void {
+    this.credencialService.credencial = credencial;    
+    const dialogRef = this.dialog.open(EditarCredencialModalComponent, {
+      width: '550px',   
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result == 1 ){
+        this.mostrarAviso("Se guardo la Credencial", "Exito");     
+        this.obtenerCredencialPorAdministrativo(1);   
+      }else if(result == 2){
+        this.mostrarAviso("Error al guardar la Credencial", "Error");
+      }
+    });
+  }
+
+  mostrarAviso(mensaje: string, accion: string) : MatSnackBarRef<SimpleSnackBar>{
+    return this.aviso.open(mensaje,accion, {
+      duration: 3000
+    })
+  }
+
+  eliminarCredencial(idCredencial : number){
+    this.credencialService.eliminarCredencial(idCredencial).subscribe((data:any) => {
+      if(data.metadata[0].codigo== "00"){
+        this.mostrarAviso("Se Elimino la Aplicacion", "Exito")
+        this.obtenerCredencialPorAdministrativo(1);
+      }else if(data.metadata[0].codigo == 2){
+        this.mostrarAviso("Error al Eliminar la Aplicacion", "Error");
+      }
+    });    
+  
+  }
+
+  mostrarContra(credencial: any) {
+    credencial.contraVisible = true;
+  }
+
+  ocultarContra(credencial: any) {
+    credencial.contraVisible = false;
   }
 
 }

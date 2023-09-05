@@ -1,3 +1,15 @@
 <p>PAGINA DE LGUEO</p>
-
-<app-login-componente></app-login-componente>
+<div>
+    <h2>Iniciar Sesión</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div>
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username" [(ngModel)]="username" required>
+      </div>
+      <div>
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" [(ngModel)]="password" required>
+      </div>
+      <button type="submit">Iniciar Sesión</button>
+    </form>
+  </div>

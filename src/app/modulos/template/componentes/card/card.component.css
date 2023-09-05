@@ -76,6 +76,12 @@ mat-card-actions{
     text-underline-offset: 4px;
 }
 
+.mostrar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 @media screen and (max-width: 700px) {
 
     h3{

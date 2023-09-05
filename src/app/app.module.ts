@@ -18,7 +18,6 @@ import { HomeModule } from './modulos/home/home.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    // Modulos creados por mi
     LoginModule,
     HomeModule,
  

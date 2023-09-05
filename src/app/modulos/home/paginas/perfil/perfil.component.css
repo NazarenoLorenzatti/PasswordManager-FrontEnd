@@ -1,3 +1,11 @@
+p {
+  margin: 0px;
+}
+.btn-mostrar-ocultar{
+  padding: 0px;
+}
+
+
 .container {
   display: flex;
   width: 100%;
@@ -37,7 +45,7 @@ mat-icon{
 
 .credenciales { 
   display: block;
-  height: 20%;
+  height: 30%;
 }
 
 .lista {
@@ -72,7 +80,7 @@ mat-icon{
 }
 
 .foto-perfil {
-  height: 70%;
+  height: 60%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -86,11 +94,16 @@ mat-icon{
 }
 
 .user {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   width: 100%;
 }
 
-.pass {
+.pass, .mostrar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   width: 100%;
 }
 
@@ -113,7 +126,7 @@ mat-icon{
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 60%;
+  height: 70%;
   width: 80%;
   background-color: #424242;
   padding: 15px;
@@ -129,6 +142,31 @@ mat-icon{
   margin-left: 60px;
 }
 
+.form-editar{
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pass-form, .user-form{
+  width: 100%;
+  margin-bottom: 5px;
+  display: flex;
+}
+
+.input{
+  color: #fff;
+  width: 100%;
+  padding: 5px;
+  background-color: #606060;
+  display: inline-block;  
+  border-radius: 4px;
+  
+  outline: none;
+  border-bottom: 1px solid #ad42da;
+}
 
 @media screen and (min-width: 1000px) {
   .container {

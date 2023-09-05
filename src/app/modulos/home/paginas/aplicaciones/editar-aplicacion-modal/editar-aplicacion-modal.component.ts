@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { TablaComponent } from 'src/app/modulos/template/componentes/tabla/tabla.component';
 import { AplicacionService } from 'src/app/modulos/template/servicios/aplicaciones/aplicacion-service.service';
 
 @Component({
@@ -11,8 +10,6 @@ import { AplicacionService } from 'src/app/modulos/template/servicios/aplicacion
 })
 export class EditarAplicacionModalComponent implements OnInit {
 
-
-  //private tabla = inject(TablaComponent);
   aplicacionForm!: FormGroup;
   private fb = inject(FormBuilder);
   private aplicacionService = inject(AplicacionService);

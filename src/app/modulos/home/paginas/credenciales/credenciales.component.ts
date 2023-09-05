@@ -1,6 +1,9 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Component, HostListener, OnInit, inject } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CredencialService } from 'src/app/modulos/template/servicios/credenciales/credencial-service.service';
+
 
 @Component({
   selector: 'app-credenciales',
@@ -13,6 +16,9 @@ export class CredencialesComponent implements OnInit {
   pantallaCelu: MediaQueryList;
   listaDeCredenciales: any[] = []; 
   anchoPantalla: number;
+
+  public dialog = inject(MatDialog);
+  public aviso = inject(MatSnackBar); // Para mostrar avisos dinamicos
 
   constructor(media: MediaMatcher) {
     this.anchoPantalla = window.innerWidth; // Obtener el ancho inicial de la ventana
@@ -31,6 +37,7 @@ export class CredencialesComponent implements OnInit {
 
   obtenerCredencialPorAdministrativo(idAdministrativo: number): void {
     this.credencialService.buscarCredencialPorAdministrativo(idAdministrativo).subscribe((data: any) => {
+      console.log(data);
       this.procesarResponse(data);
     }, (error: any) => {
       console.log("Error", error);

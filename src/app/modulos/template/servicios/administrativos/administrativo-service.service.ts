@@ -19,4 +19,20 @@ export class AdministrativoService {
     const endpoint = `${base_url}/buscar-administrativo/${id}`;
     return this.http.get(endpoint);
   } 
+
+  editarAdministrativo(body: any){
+    const endpoint = `${base_url}/editar-administrativos`;
+    return this.http.put(endpoint, body);
+  }
+
+  crearAdministrativo(body: any){
+    const endpoint = `${base_url}/crear-administrativos`;
+    return this.http.post(endpoint, body);
+  }
+
+  eliminarAdministrativo(id:number){          
+    const endpoint = `${base_url}/eliminar-administrativo/${id}`;
+    return this.http.delete(endpoint);
+  }
+ 
 }

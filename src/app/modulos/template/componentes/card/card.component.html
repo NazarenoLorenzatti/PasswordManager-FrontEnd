@@ -12,7 +12,7 @@
       <div class="label">
         <p>USUARIO: </p>
       </div>
-      <div class="value">
+      <div class="value-user">
         <p> {{c.usuario}}</p>
       </div>
     </div>
@@ -20,22 +20,32 @@
       <div class="label">
         <p> PASSWORD: </p>
       </div>
-      <div class="value">
-        <p>{{c.contra}} </p>
+      <div class="mostrar" *ngIf="!c.contraVisible; else ver ">
+        <div class="value">
+          <p type="password">● ● ● ● ● ● ● </p>
+        </div>
+        <button mat-icon-button matTooltip="Basic" (click)="mostrarContra(c)"
+          color="basic"><mat-icon>visibility</mat-icon></button>
       </div>
-      <button mat-icon-button  matTooltip="Basic" ><mat-icon>visibility</mat-icon></button>
+      <ng-template #ver>
+        <div class="value">
+          <p type="password">{{c.contra}}</p>
+        </div>
+        <button mat-icon-button matTooltip="Basic" (click)="ocultarContra(c)"
+          color="basic"><mat-icon>visibility_off</mat-icon></button>
+      </ng-template>
     </div>
   </div>
   <mat-card-actions>
     <div class="botones">
       <div>
-          <button mat-icon-button>
-              <mat-icon aria-label="Edit">edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn">
-            <mat-icon aria-label="Delete">delete</mat-icon>
+        <button mat-icon-button (click)="abrirModalEditar(c)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+        <button mat-icon-button color="warn" (click)="eliminarCredencial(c.idCredencial)">
+          <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
       </div>
-  </div>
+    </div>
   </mat-card-actions>
 </mat-card>
