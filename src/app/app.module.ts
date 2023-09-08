@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Modulos creado por mi
 import { LoginModule } from './modulos/login/login.module';
 import { HomeModule } from './modulos/home/home.module';
+import { empty } from 'rxjs';
 
 
 //I keep the new line
@@ -25,5 +26,11 @@ import { HomeModule } from './modulos/home/home.module';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
+export class AppModule implements OnInit{
+  ngOnInit(): void {
+    localStorage.setItem('expires', '');
+    localStorage.setItem('token','');
+  }
+
+  
 }

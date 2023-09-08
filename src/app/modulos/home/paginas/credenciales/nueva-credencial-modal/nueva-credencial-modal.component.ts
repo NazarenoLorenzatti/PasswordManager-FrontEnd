@@ -23,6 +23,7 @@ export class NuevaCredencialModalComponent implements OnInit {
   private dialogRef = inject(MatDialogRef);
   
   ngOnInit(): void {
+    
     this.obtenerAdministrativo(1);
     this.listarAplicaciones();
     this.credencialForm = this.fb.group({

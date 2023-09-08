@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="titulo">
+      <h2>Pin de Acceso</h2>
+    </div>
+    <div class="formulario-login">
+      <mat-dialog-content>
+        <form [formGroup]="loginForm">
+          <div class="campo">
+            
+            <mat-form-field>
+              <input matInput  placeholder="Usuario" formControlName="username" required />
+            </mat-form-field>
+          </div>      
+          <div class="campo">
+            <mat-form-field>
+              <input matInput placeholder="Pin" formControlName="pin" required />
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-dialog-content>
+      <mat-dialog-actions>
+        <button mat-button color="primary" (click)="onSubmit()">
+          <mat-icon>save</mat-icon> ENVIAR PIN
+        </button>
+      </mat-dialog-actions>
+    </div>
+  </div>
+  

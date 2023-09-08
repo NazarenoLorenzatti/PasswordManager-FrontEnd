@@ -1,6 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Component, inject } from '@angular/core';
 import { AdministrativoService } from '../../servicios/administrativos/administrativo-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,6 +11,7 @@ import { AdministrativoService } from '../../servicios/administrativos/administr
 export class SidenavComponent {
 
   private administrativoService = inject(AdministrativoService);
+  private router = inject(Router);
 
   nombre: string = '';
   apellido: string = '';
@@ -69,5 +71,10 @@ export class SidenavComponent {
       this.username = resp.administrativoResponse.administrativo[0].usuario.username;
       this.password = resp.administrativoResponse.administrativo[0].usuario.password;
     }
+  }
+
+  logout() {
+    localStorage.removeItem('token');    
+    this.router.navigate(['/login']);
   }
 }

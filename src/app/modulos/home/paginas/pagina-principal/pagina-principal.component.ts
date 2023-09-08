@@ -16,6 +16,7 @@ export class PaginaPrincipalComponent implements OnInit {
   
 
   ngOnInit(): void {
+    console.log("TOKEN - PAGINA PRINCIPAL" , localStorage.getItem('token'));
     this.obtenerAdministrativo(1);
   }  
 

@@ -18,28 +18,43 @@ export class AplicacionService {
   constructor() { }
 
   buscarAplicacion(id:number){
+    const headers = {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    };
     const endpoint = `${base_url}/buscar-aplicacion/${id}`;
-    return this.http.get(endpoint);
+    return this.http.get(endpoint, { headers });
   }
 
   getAplicaciones(){
+    const headers = {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    };
     const endpoint = `${base_url}/listar-aplicaciones`;
-    return this.http.get(endpoint);
+    return this.http.get(endpoint, { headers });
   }
 
   saveAplicacion(body: any){
+    const headers = {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    };
     const endpoint = `${base_url}/guardar-aplicacion`;
-    return this.http.post(endpoint, body);
+    return this.http.post(endpoint, body, { headers });
   }
   
   editarAplicacion(body: any){
+    const headers = {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    };
     const endpoint = `${base_url}/editar-aplicacion`;
-    return this.http.put(endpoint, body);
+    return this.http.put(endpoint, body, { headers });
   }
 
-  eliminarAplicacion(id:number){          
+  eliminarAplicacion(id:number){     
+    const headers = {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    };     
     const endpoint = `${base_url}/eliminar-aplicacion/${id}`;
-    return this.http.delete(endpoint);
+    return this.http.delete(endpoint, { headers });
   }
 
 }

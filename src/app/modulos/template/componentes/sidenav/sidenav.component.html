@@ -17,7 +17,7 @@
                         <mat-icon>person_outline</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu"> <!-- ENLAZA CON ESTO-->
-                        <button mat-menu-item>
+                        <button mat-menu-item (click)="logout()">
                             <mat-icon>exit_to_app</mat-icon>
                             Cerrar Sesion
                         </button>
@@ -52,10 +52,10 @@
                     {{nav.name}}
                 </a>
 
-                <a class="cerrar-sesion" mat-list-item href="#" color="warn">
+                <button class="cerrar-sesion" mat-button color="warn" (click)="logout()">
                     <mat-icon class="icono" color="warn"> exit_to_app</mat-icon>
                     Cerrar Sesion
-                </a>
+                </button>
 
             </mat-nav-list>
         </mat-sidenav>

@@ -11,8 +11,11 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   actualizarUsuario(body: any){
+    const headers = {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    };
     const endpoint = `${base_url}/actualizar-usuario`;
-    return this.http.put(endpoint, body);
+    return this.http.put(endpoint, body, { headers });
   }
 
   

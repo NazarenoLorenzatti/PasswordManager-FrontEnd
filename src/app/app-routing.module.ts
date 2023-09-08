@@ -4,10 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 // Modulos creados por mi
 import { RuteoLoginModule } from './modulos/login/ruteo-login.module';
 import { RuteoHomeModule } from './modulos/home/ruteo-home.module';
+import { AuthGuard } from './AuthGuard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
-  { path: '', pathMatch: 'full', redirectTo: '/home' },
+  { path: '', pathMatch: 'full', redirectTo: '/home'},
 ];
 
 @NgModule({
