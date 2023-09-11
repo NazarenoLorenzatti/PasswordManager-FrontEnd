@@ -18,5 +18,13 @@ export class UsuarioService {
     return this.http.put(endpoint, body, { headers });
   }
 
+  subirFoto(formData: FormData){
+    const headers = {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    };
+    const endpoint = `${base_url}/subir-foto-perfil`;
+    return this.http.post(endpoint, formData, { headers });
+  }
+
   
 }

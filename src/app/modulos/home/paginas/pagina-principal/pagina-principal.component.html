@@ -2,7 +2,9 @@
 <div class="container">
     <div class="header">
         <div class="img">
-            <img src="../assets/imagenes/sin-foto.jpg" alt="Mi Imagen" />
+            <img *ngIf="imgPerfil" [src]="imgPerfil" alt="Mi Imagen" />
+
+            <img *ngIf="!imgPerfil" src="../assets/imagenes/sin-foto.jpg" alt="Mi Imagen" />
         </div>
         <div class="titulo-bienvenida">
             <div class="bienvenido">

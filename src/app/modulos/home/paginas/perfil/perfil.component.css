@@ -59,24 +59,21 @@ mat-icon{
 }
 
 .label {
-  color: #ad42da;
-  text-decoration: underline;
-  text-decoration-color: rgb(255, 255, 255);
-  text-underline-offset: 6px;
+  color: #4e2694;
   padding-bottom: 5px;
   font-size: 22px;
-  text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  text-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
   letter-spacing: 4px;
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 .valor {
   margin-left: 20px;
-  font-size: 20px;
-  text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  font-size: 20px;;
   letter-spacing: 3px;
   font-style: italic;
   text-align: center;
+  font-weight: bolder;
 }
 
 .foto-perfil {
@@ -90,7 +87,16 @@ mat-icon{
 .img {
   width: 180px;
   height: 180px;
+  border-radius: 8px;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.6);
+}
+img{
+  border: 1px solid #ddd;
+  padding: 5px;
+  width: 150px;
+  border-radius: 8px;
+  width: 180px;
+  height: 180px;
 }
 
 .user {
@@ -128,8 +134,9 @@ mat-icon{
   flex-direction: column;
   height: 70%;
   width: 80%;
-  background-color: #424242;
+  background-color: #fafafa;
   padding: 15px;
+  border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
 }
 
@@ -229,5 +236,17 @@ mat-icon{
   .contadores {
     margin-left: 30px;
   }
+
+  .img {
+    width: 150px;
+    height: 150px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.6);
+  }
+  img{
+
+    width: 150px;
+    height: 150px;
+  }
+  
 
 }

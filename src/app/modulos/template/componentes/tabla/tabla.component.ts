@@ -5,6 +5,7 @@ import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/s
 import { MatDialog } from '@angular/material/dialog';
 import { EditarAplicacionModalComponent } from 'src/app/modulos/home/paginas/aplicaciones/editar-aplicacion-modal/editar-aplicacion-modal.component';
 import { NuevaAplicacionModalComponent } from 'src/app/modulos/home/paginas/aplicaciones/nueva-aplicacion-modal/nueva-aplicacion-modal.component';
+import { ConfirmComponent } from '../confirmacion/confirm/confirm.component';
 
 /**
  * @title Flex table where one column's cells has a greater height than others.
@@ -72,15 +73,20 @@ export class TablaComponent implements OnInit {
     }
   }
 
-  eliminar(id:number): void{
-    this.aplicacionService.eliminarAplicacion(id).subscribe((data:any) => {
-      if(data.metadata[0].codigo== "00"){
-        this.mostrarAviso("Se Elimino la Aplicacion", "Exito")
-        this.listarAplicaciones();
-      }else if(data.metadata[0].codigo == 2){
-        this.mostrarAviso("Error al Eliminar la Aplicacion", "Error");
+  eliminar(id:number): void{    
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: '300px',    
+      data: {id: id , name: "aplicaciones"}
+    });
+
+    dialogRef.afterClosed().subscribe((result:any) => {
+      if(result == 1){
+        this.mostrarAviso("Aplicacion Eliminada", "Exitosa");
+        this.listarAplicaciones(); 
+      } else if (result == 2){
+        this.mostrarAviso("Error al eliminar aplicacion", "Error");
       }
-    });    
+    })
   }
 
 }

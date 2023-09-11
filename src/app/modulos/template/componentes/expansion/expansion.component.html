@@ -12,12 +12,12 @@
                 </div>
                 <div class="botones">
                     <div>
-                        <button mat-icon-button>
+                        <button (click)="abrirModal(a.idAplicacion, a.nombreAplicacion, a.url)" mat-icon-button>
                             <mat-icon aria-label="Edit">edit</mat-icon>
                         </button>
                     </div>
                     <div>
-                        <button mat-icon-button color="warn">
+                        <button mat-icon-button color="warn" (click)="eliminar(a.idAplicacion)">
                             <mat-icon aria-label="Delete">delete</mat-icon>
                         </button>
                     </div>

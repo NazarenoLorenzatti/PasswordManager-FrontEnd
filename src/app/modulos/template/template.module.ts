@@ -25,6 +25,7 @@ import {
 	IgxButtonModule
  } from "igniteui-angular";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ConfirmComponent } from './componentes/confirmacion/confirm/confirm.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ExpansionComponent,
     ContadoresComponent,
     CarouselComponent,
+    ConfirmComponent,
   ],
   exports : [
     SidenavComponent, // Para que sea visible en otros modulos

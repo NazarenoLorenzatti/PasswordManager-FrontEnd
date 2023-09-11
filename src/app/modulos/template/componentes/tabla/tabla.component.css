@@ -1,6 +1,6 @@
 th{
   font-size: 20px;
-  text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  font-weight: bolder;
   font-style: italic;
   letter-spacing: 2px;
 }
@@ -28,8 +28,7 @@ td{
 }
 
 .th-color, .td-color{
-  color: #ad42da;
-  text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  color: #661e85;  
 }
 .td-color{
   font-size: 30px;
@@ -41,7 +40,6 @@ a{
   margin-top: 10px;
   align-items: flex-end;
   font-size: 15px;
-  color: #f1eef3;
-  text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  color: #4e2694;
 }
 

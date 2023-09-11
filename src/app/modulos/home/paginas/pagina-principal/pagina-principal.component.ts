@@ -13,6 +13,8 @@ export class PaginaPrincipalComponent implements OnInit {
   pantallaCelu: MediaQueryList;
   nombre: string = '';
   apellido: string = '';
+  imgPerfil!: any;
+  
   
 
   ngOnInit(): void {
@@ -38,6 +40,7 @@ export class PaginaPrincipalComponent implements OnInit {
     if (resp.metadata[0].codigo == "00") {
       this.nombre = resp.administrativoResponse.administrativo[0].nombre;
       this.apellido = resp.administrativoResponse.administrativo[0].apellido;
+      this.imgPerfil = 'data:image/jpeg;base64,' + resp.administrativoResponse.administrativo[0].usuario.imgPerfil;
       console.log("NOMBRE DEL ADM", );
     }
 

@@ -40,7 +40,9 @@
                 <div class="profile-card">
                     <div class="header">
                         <div class="img-container">
-                            <img class="img" src="../assets/imagenes/sin-foto.jpg" alt="Mi Imagen" />
+                            <img *ngIf="imgPerfil" [src]="imgPerfil" alt="Mi Imagen" />
+
+                            <img *ngIf="!imgPerfil" src="../assets/imagenes/sin-foto.jpg" alt="Mi Imagen" />
                         </div>
                         <h5>{{nombre}} {{apellido}}</h5>
                         <p>{{email}}</p>
@@ -52,8 +54,8 @@
                     {{nav.name}}
                 </a>
 
-                <button class="cerrar-sesion" mat-button color="warn" (click)="logout()">
-                    <mat-icon class="icono" color="warn"> exit_to_app</mat-icon>
+                <button class="cerrar-sesion" mat-button color="primary" (click)="logout()">
+                    <mat-icon class="icono" color="primary"> exit_to_app</mat-icon>
                     Cerrar Sesion
                 </button>
 

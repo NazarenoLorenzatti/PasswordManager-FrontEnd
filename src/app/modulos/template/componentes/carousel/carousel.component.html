@@ -46,11 +46,11 @@
                     <div class="botones">
                         <div class="btn">
                             <button mat-icon-button (click)="abrirModalEditar(c)">
-                                <mat-icon aria-label="Edit">edit</mat-icon>
+                                <mat-icon color="primary" aria-label="Edit">edit</mat-icon>
                             </button>
                         </div>
                         <div class="btn">
-                            <button mat-icon-button color="warn" (click)="eliminarCredencial(c.idCredencial)">
+                            <button mat-icon-button  (click)="eliminarCredencial(c.idCredencial)">
                                 <mat-icon aria-label="Delete">delete</mat-icon>
                             </button>
                         </div>
@@ -60,9 +60,9 @@
                     <div class="vigencia">
                         <div class="div-icono">
                             <mat-icon *ngIf="c.estadoCredencial.nombreCredencial =='VIGENTE'; else vencida "
-                                class="icono-vigencia" color="accent">done_all</mat-icon>
+                                class="icono-vigencia" color="primary">done_all</mat-icon>
                             <ng-template #vencida><mat-icon class="icono-vigencia"
-                                    color="warn">report_problem</mat-icon></ng-template>
+                                    >report_problem</mat-icon></ng-template>
                         </div>
                         <b>{{c.proximaActualizacion}}</b>
                         <b>{{c.estadoCredencial.nombreCredencial}}</b>

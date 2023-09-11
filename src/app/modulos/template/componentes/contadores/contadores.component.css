@@ -46,9 +46,8 @@ h5{
   justify-content: center;
   align-items: center;
   font-size: 32px;
-  text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
   font-weight: bold;
-  color: #fff;
+  color: #000000;
   position: absolute;
   z-index: 2;
   transform: rotate(0deg);

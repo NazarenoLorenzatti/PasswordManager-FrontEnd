@@ -29,14 +29,18 @@
     <div class="columna-derecha">
         <div class="recuadro">
             <div class="btn-subir-foto">
-                <button mat-button>
+                <button type="button" mat-raised-button (click)="fileInput.click()" mat-button>
                     <mat-icon>add_to_photos</mat-icon>
                     Subir Foto
                 </button>
+                <input hidden (change)="onFileSelected($event)" #fileInput type="file" accept="image/*">
+                <button *ngIf="selectedFile" (click)="uploadImg(selectedFile)"><mat-icon>add_to_photos</mat-icon></button>
             </div>
             <div class="foto-perfil">
                 <div class="img">
-                    <img src="../assets/imagenes/sin-foto.jpg" alt="Mi Imagen" />
+                    <img *ngIf="imgPerfil" [src]="imgPerfil" alt="Mi Imagen" />
+
+                    <img *ngIf="!imgPerfil" src="../assets/imagenes/sin-foto.jpg" alt="Mi Imagen" />
                 </div>
             </div>
             <!--Deshabilitado Editar-->
@@ -46,12 +50,12 @@
                     <Span>{{username}}</Span>
                 </div>
                 <div class="pass">
-                    <b class="etiqueta">Contraseña:</b>    
+                    <b class="etiqueta">Contraseña:</b>
                     <div class="mostrar" *ngIf="!contraVisible; else ver ">
                         <div class="value">
                             <p type="password">● ● ● ● ● ● ●</p>
                         </div>
-                        <button class="btn-mostrar-ocultar" mat-icon-button matTooltip="Basic" (click)="mostrarContra()" 
+                        <button class="btn-mostrar-ocultar" mat-icon-button matTooltip="Basic" (click)="mostrarContra()"
                             color="basic"><mat-icon>visibility</mat-icon></button>
                     </div>
                     <ng-template #ver>
@@ -70,11 +74,13 @@
                         <div>
                             <div class="user-form">
                                 <b class="etiqueta">Usuario:</b>
-                                <input class="input" placeholder="Username" formControlName="username" value="{{username}}"required />
+                                <input class="input" placeholder="Username" formControlName="username"
+                                    value="{{username}}" required />
                             </div>
                             <div class="pass-form">
-                                <b class="etiqueta">Contraseña:</b>                            
-                                <input type="password" class="input" matInput placeholder="Password" formControlName="password" value="{{password}}" required />
+                                <b class="etiqueta">Contraseña:</b>
+                                <input type="password" class="input" matInput placeholder="Password"
+                                    formControlName="password" value="{{password}}" required />
                             </div>
                         </div>
                     </form>

@@ -19,6 +19,7 @@ export class SidenavComponent {
   telefono: string = '';
   username: string = '';
   password: string = '';
+  imgPerfil!: any;
 
   pantallaCelu: MediaQueryList;
   menuNav = [
@@ -70,6 +71,7 @@ export class SidenavComponent {
       this.telefono = resp.administrativoResponse.administrativo[0].telefono;
       this.username = resp.administrativoResponse.administrativo[0].usuario.username;
       this.password = resp.administrativoResponse.administrativo[0].usuario.password;
+      this.imgPerfil = 'data:image/jpeg;base64,' + resp.administrativoResponse.administrativo[0].usuario.imgPerfil;
     }
   }
 

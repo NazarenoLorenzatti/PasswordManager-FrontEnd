@@ -2,7 +2,8 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/modulos/template/servicios/login/login.service';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-pagina-login',
@@ -17,6 +18,8 @@ export class PaginaLoginComponent {
   private loginService = inject(LoginService);
   private router = inject(Router);
   public aviso = inject(MatSnackBar);
+  public dialog = inject(MatDialog);
+
 
   constructor() { }
 
@@ -40,9 +43,16 @@ export class PaginaLoginComponent {
         }  
       },
       (error: any) => {
+        this.mostrarAviso("Usuario o contraseña incorrectos", "X");
         console.log("Error", error);
       }
     );
+  }
+
+  mostrarAviso(mensaje: string, accion: string) : MatSnackBarRef<SimpleSnackBar>{
+    return this.aviso.open(mensaje,accion, {
+      duration: 3000
+    })
   }
 }
 

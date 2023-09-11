@@ -5,6 +5,7 @@ import { NuevaCredencialModalComponent } from 'src/app/modulos/home/paginas/cred
 import { EditarCredencialModalComponent } from 'src/app/modulos/home/paginas/credenciales/editar-credencial-modal/editar-credencial-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
+import { ConfirmComponent } from '../confirmacion/confirm/confirm.component';
 
 @Component({
   selector: 'card-selector',
@@ -83,15 +84,19 @@ export class CardComponent implements OnInit {
   }
 
   eliminarCredencial(idCredencial : number){
-    this.credencialService.eliminarCredencial(idCredencial).subscribe((data:any) => {
-      if(data.metadata[0].codigo== "00"){
-        this.mostrarAviso("Se Elimino la Aplicacion", "Exito")
-        this.obtenerCredencialPorAdministrativo(1);
-      }else if(data.metadata[0].codigo == 2){
-        this.mostrarAviso("Error al Eliminar la Aplicacion", "Error");
+    const dialogRef = this.dialog.open(ConfirmComponent, {
+      width: '300px',    
+      data: {id: idCredencial , name: "credenciales"}
+    });
+
+    dialogRef.afterClosed().subscribe((result:any) => {
+      if(result == 1){
+        this.mostrarAviso("Credencial Eliminada", "Exitosa");
+        this.obtenerCredencialPorAdministrativo(1);  
+      } else if (result == 2){
+        this.mostrarAviso("Error al eliminar la Credencial", "Error");
       }
-    });    
-  
+    })
   }
 
   mostrarContra(credencial: any) {
