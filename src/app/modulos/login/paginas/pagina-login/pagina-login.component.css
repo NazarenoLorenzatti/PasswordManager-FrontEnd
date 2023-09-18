@@ -1,38 +1,57 @@
-mat-dialog-content{
-    display: block;
+.container{
+    height: 100vh;
+    width: 100vw;
+    background-color: #2e3f4f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.titulo{
+    color: #121b26;
+    margin-bottom: 6vh;
+    width: 30%;
+}
+
+.card{
+    background-color: #fff;
+    text-align: center;
+    padding: 20px;
+    font-size: 60px;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8);
+}
+
+.formulario-login{
+    background-color: #fff;
+    border: 4px solid #045358;
+    /*background-color: #045358;*/
+    width: 30%;
+    height: 60%;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+mat-dialog-content
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 80%;
+    height: 40%;
+}
+
+form{
+    width: 100%;
 }
 
 mat-form-field{
     display: inline;
-    margin: 10px;
 }
 
-h3{
-    margin-bottom: 25px;
+.registrarse{
+    margin-left: 20px;
 }
-.container{
-    width: 100vw;
-    height: 100vh;
-    color: #000;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-}
-
-.formulario-login{
-    display: flex;
-    width: 40%;
-    height: 40%;
-    padding-top: 15px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    background-color: #fafafa;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.9);
-}
-
-
-

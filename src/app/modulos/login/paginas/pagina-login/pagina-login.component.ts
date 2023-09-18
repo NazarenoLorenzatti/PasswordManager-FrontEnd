@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginService } from 'src/app/modulos/template/servicios/login/login.service';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./pagina-login.component.css']
 })
 
-export class PaginaLoginComponent {
+export class PaginaLoginComponent implements OnInit{
 
   loginForm!: FormGroup;
   private fb = inject(FormBuilder);
@@ -47,6 +47,10 @@ export class PaginaLoginComponent {
         console.log("Error", error);
       }
     );
+  }
+
+  signUp(){
+    this.router.navigate(['/registrar-usuario']);
   }
 
   mostrarAviso(mensaje: string, accion: string) : MatSnackBarRef<SimpleSnackBar>{

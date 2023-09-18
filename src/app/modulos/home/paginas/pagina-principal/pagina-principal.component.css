@@ -1,8 +1,13 @@
-hr{
-  border-color: #ad42da;;
+h1,p,h2,h3,h4,h5,h6,b {
+  font-family: 'fuentePersonalizada';
 }
 
-h3, h2{
+hr {
+  border-color: #0E8388;
+}
+
+h3,
+h2 {
   margin: 0px;
 }
 
@@ -17,6 +22,7 @@ h3, h2{
   display: flex;
   margin-bottom: 25px;
   text-justify: center;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -26,11 +32,13 @@ h3, h2{
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 }
 
 .bienvenido {
-  color: #4e2694;
+  color: #0E8388;
   align-self: start;
   flex: 1;
   order: 1;
@@ -38,7 +46,7 @@ h3, h2{
   letter-spacing: 3px;
   font-size: 45px;
   margin-right: 25px;
-  }
+}
 
 .nombre-admin {
   flex: 1;
@@ -49,10 +57,10 @@ h3, h2{
   padding-top: 10px;
   font-size: 30px;
   letter-spacing: 3px;
- font-weight: bolder;
+  font-weight: bolder;
 }
 
-.nombre{
+.nombre {
   margin-right: 10px;
 }
 
@@ -65,7 +73,7 @@ h3, h2{
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.6);
 }
 
-img{
+img {
   border: 1px solid #ddd;
   padding: 5px;
   border-radius: 8px;
@@ -86,26 +94,29 @@ img{
 
   display: flex;
   justify-content: center;
-  /* Distribuye los elementos en el espacio disponible */
   flex-wrap: wrap;
-  /* Envuelve los elementos en varias líneas si no caben en una sola */
 }
 
 .card {
   flex-basis: calc(90% - 20px);
-  /* El tamaño base de cada item (3 columnas) con un margen de 20px entre ellos */
   margin-bottom: 20px;
-  /* Espacio entre los elementos */
 }
 
-/* Media query para pantallas con una resolución menor a 600px */
-@media screen and (max-width: 700px) {
 
-  .bienvenido,
-  .nombre-admin {
-    flex: auto;
-    /* Reiniciar la propiedad 'flex' para que los elementos se muestren uno debajo del otro */
+
+@media screen and (max-width: 800px) {
+  .bienvenido {
+    align-self: center;
+    text-align: center;
   }
+
+  .nombre-admin {   
+    align-self: center;
+    text-align: center;;
+  }
+}
+
+@media screen and (max-width: 700px) {
 
   .container {
     padding: 25px;
@@ -116,23 +127,22 @@ img{
     justify-content: center;
     align-items: center;
     text-justify: center;
+    text-align: center;
     flex-wrap: wrap;
   }
 
   .card {
     flex-basis: calc(100% - 20px);
-    /* 2 columnas en lugar de 3 */
   }
 
   .titulo-bienvenida {
+    display: flex;
     text-align: center;
-    text-justify: center;
     padding: 20px;
   }
 
   .bienvenido {
     padding-left: 20px;
-    font-size: 25px;
     text-align: center;
     text-justify: center;
   }

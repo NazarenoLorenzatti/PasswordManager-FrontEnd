@@ -6,6 +6,7 @@ import { EditarCredencialModalComponent } from 'src/app/modulos/home/paginas/cre
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { ConfirmComponent } from '../confirmacion/confirm/confirm.component';
+import { AdministrativoService } from '../../servicios/administrativos/administrativo-service.service';
 
 @Component({
   selector: 'card-selector',
@@ -15,6 +16,7 @@ import { ConfirmComponent } from '../confirmacion/confirm/confirm.component';
 export class CardComponent implements OnInit {
 
   private credencialService = inject(CredencialService);
+  private administrativoService = inject(AdministrativoService);
   pantallaCelu: MediaQueryList;
   public dialog = inject(MatDialog);
   public aviso = inject(MatSnackBar);
@@ -22,7 +24,17 @@ export class CardComponent implements OnInit {
  
 
   ngOnInit(): void {
-    this.obtenerCredencialPorAdministrativo(1);
+    let requestBody ={
+      username: localStorage.getItem('user'),
+    }
+    this.administrativoService.buscarAdministrativoPorUsuario(requestBody).subscribe((data: any) => {
+      console.log("Administrativo", data);
+      if(data.metadata[0].codigo == "00"){
+        this.obtenerCredencialPorAdministrativo(data.administrativoResponse.administrativo[0].idAdministrativo);
+      }
+    }, (error: any) => {
+      console.log("Error", error);
+    });    
   }
 
   constructor(media : MediaMatcher) {
@@ -38,11 +50,16 @@ export class CardComponent implements OnInit {
   }
 
   procesarResponse(resp: any) {
- 
     if (resp.metadata[0].codigo == "00") {
+      console.log(resp);
       this.listaDeCredenciales = resp.credencialResponse.credencial;
       this.listaDeCredenciales.forEach(credencial => {
+        
+        const timestamp = credencial.proximaActualizacion;
+        const fecha = new Date(timestamp);
+
         credencial.contraVisible = false;
+        credencial.proximaActualizacion = fecha.toLocaleDateString('es-ES',{ year: 'numeric', month: 'numeric', day: 'numeric' });
       });  
     }
 

@@ -5,6 +5,7 @@ import { ConfirmComponent } from '../confirmacion/confirm/confirm.component';
 import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { EditarAplicacionModalComponent } from 'src/app/modulos/home/paginas/aplicaciones/editar-aplicacion-modal/editar-aplicacion-modal.component';
+import { AdministrativoService } from '../../servicios/administrativos/administrativo-service.service';
 
 
 @Component({
@@ -16,41 +17,37 @@ export class ExpansionComponent implements OnInit {
   panelOpenState = false;
 
   private aplicacionService = inject(AplicacionService);
+  private administrativoService = inject(AdministrativoService);
   public dialog = inject(MatDialog);
   public aviso = inject(MatSnackBar); 
   listaDeAplicaciones : any [] = [];
 
   
   ngOnInit(): void {
-    this.listarAplicaciones();
+    this.obtenerAplicacionsPorAdministrativo();
   }
 
   constructor(){
        
   }
 
-  listarAplicaciones(): void {
-    this.aplicacionService.getAplicaciones().subscribe((data: any) => {
+  obtenerAplicacionsPorAdministrativo(): void{
+    let requestBody ={
+      username: localStorage.getItem('user'),
+    }
+    this.administrativoService.buscarAdministrativoPorUsuario(requestBody).subscribe((data: any) => {      
       this.procesarResponse(data);
     }, (error: any) => {
       console.log("Error", error);
     })
+
   }
 
-  procesarResponse(resp: any) {
-    const dataAplicaciones: AplicacionElement[] = [];
 
+  procesarResponse(resp: any) {    
     if (resp.metadata[0].codigo == "00") {
-      let listaDeAplicaciones = resp.aplicacionResponse.aplicacion;
-      //console.log(listaDeAplicaciones);
-
-      listaDeAplicaciones.forEach((element: AplicacionElement) => {
-        console.log("ELEMENTO",element);
-        dataAplicaciones.push(element);
-      });
-
-      this.listaDeAplicaciones = dataAplicaciones;
-      console.log("LISTA DE APLICACIONES",listaDeAplicaciones);
+      this.listaDeAplicaciones = resp.administrativoResponse.administrativo[0].aplicaciones; 
+      console.log("LISTA DE APLICACIONES",this.listaDeAplicaciones);
     }
   }
 
@@ -67,7 +64,7 @@ export class ExpansionComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result == 1 ){
         this.mostrarAviso("Se guardo la Aplicacion", "Exito");
-        this.listarAplicaciones();
+        this.obtenerAplicacionsPorAdministrativo();
       }else if(result == 2){
         this.mostrarAviso("Error al guardar la Aplicacion", "Error");
       }
@@ -84,7 +81,7 @@ export class ExpansionComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result:any) => {
       if(result == 1){
         this.mostrarAviso("Aplicacion Eliminada", "Exitosa");
-        this.listarAplicaciones(); 
+        this.obtenerAplicacionsPorAdministrativo(); 
       } else if (result == 2){
         this.mostrarAviso("Error al eliminar aplicacion", "Error");
       }

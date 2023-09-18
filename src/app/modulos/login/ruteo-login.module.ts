@@ -6,23 +6,29 @@ import { RouterModule, Routes } from '@angular/router';
 import { PaginaLoginComponent } from './paginas/pagina-login/pagina-login.component';
 import { RegistroUsuarioComponent } from './paginas/registro-usuario/registro-usuario.component';
 import { AutenticacionComponent } from './paginas/segundo-factor/autenticacion/autenticacion.component';
+import { CrearAdministrativoComponent } from './paginas/crear-administrativo/crear-administrativo.component';
 
 const rutas: Routes = [
   {
-  path: 'login', 
-  component: PaginaLoginComponent,
-  loadChildren: () => import('./ruta-hija.module').then(m => m.RutaHijaModule)
+    path: 'login',
+    component: PaginaLoginComponent,
+    loadChildren: () => import('./ruta-hija.module').then(m => m.RutaHijaModule)
   },
   {
-    path: 'registrar-usuario', 
+    path: 'registrar-usuario',
     component: RegistroUsuarioComponent,
     loadChildren: () => import('./ruta-hija.module').then(m => m.RutaHijaModule)
-    },
-    {
-      path: 'autenticacion', 
-      component: AutenticacionComponent ,
-      loadChildren: () => import('./ruta-hija.module').then(m => m.RutaHijaModule)
-      },
+  },
+  {
+    path: 'autenticacion',
+    component: AutenticacionComponent,
+    loadChildren: () => import('./ruta-hija.module').then(m => m.RutaHijaModule)
+  },
+  {
+    path: 'guardar-administrativo',
+    component: CrearAdministrativoComponent,
+    loadChildren: () => import('./ruta-hija.module').then(m => m.RutaHijaModule)
+  },
 ]
 
 @NgModule({

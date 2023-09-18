@@ -1,3 +1,9 @@
+
+h1,p,h2,h3,h4,h5,h6,b {
+  font-family: 'fuentePersonalizada';
+}
+
+
 th{
   font-size: 20px;
   font-weight: bolder;
@@ -28,7 +34,7 @@ td{
 }
 
 .th-color, .td-color{
-  color: #661e85;  
+  color: #0E8388;  
 }
 .td-color{
   font-size: 30px;
@@ -36,10 +42,11 @@ td{
 
 a{
   display: flex;
+  font-weight: bolder;
   justify-content: left;
   margin-top: 10px;
   align-items: flex-end;
   font-size: 15px;
-  color: #4e2694;
+  color:#0E8388;
 }
 

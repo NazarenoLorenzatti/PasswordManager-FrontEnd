@@ -1,28 +1,26 @@
 <div class="container">
-    <div class="titulo">
-      <h2>Pin de Acceso</h2>
-    </div>
-    <div class="formulario-login">
-      <mat-dialog-content>
-        <form [formGroup]="loginForm">
-          <div class="campo">
-            
-            <mat-form-field>
-              <input matInput  placeholder="Usuario" formControlName="username" required />
-            </mat-form-field>
-          </div>      
-          <div class="campo">
-            <mat-form-field>
-              <input matInput placeholder="Pin" formControlName="pin" required />
-            </mat-form-field>
-          </div>
-        </form>
-      </mat-dialog-content>
-      <mat-dialog-actions>
-        <button mat-button color="primary" (click)="onSubmit()">
-          <mat-icon>save</mat-icon> ENVIAR PIN
-        </button>
-      </mat-dialog-actions>
-    </div>
-  </div>
-  
+  <!--div class="titulo">
+    <mat-card class="card">
+      <mat-card-content>
+        <b>Ultra Fibra</b>
+      </mat-card-content>
+    </mat-card>
+  </div-->
+  <mat-card class="formulario-login">
+    <mat-dialog-content>
+      <form [formGroup]="loginForm">
+        <mat-form-field>
+          <input matInput placeholder="Usuario" formControlName="username" required />
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Pin" formControlName="pin" required />
+        </mat-form-field>
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button color="accent" mat-raised-button (click)="onSubmit()">
+        <mat-icon>fast_forward</mat-icon> Ingresar
+      </button>
+    </mat-dialog-actions>
+  </mat-card>
+</div>

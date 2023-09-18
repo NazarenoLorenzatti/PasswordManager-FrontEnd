@@ -1,3 +1,6 @@
+h1,p,h2,h3,h4,h5,h6,b {
+    font-family: 'fuentePersonalizada';
+}
 
 @import "~font-awesome/css/font-awesome.css";
 h5{

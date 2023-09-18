@@ -6,6 +6,7 @@ import { MatSnackBar, MatSnackBarRef, SimpleSnackBar } from '@angular/material/s
 import { EditarCredencialModalComponent } from '../../../home/paginas/credenciales/editar-credencial-modal/editar-credencial-modal.component';
 import { NuevaCredencialModalComponent } from 'src/app/modulos/home/paginas/credenciales/nueva-credencial-modal/nueva-credencial-modal.component';
 import { ConfirmComponent } from '../confirmacion/confirm/confirm.component';
+import { AdministrativoService } from '../../servicios/administrativos/administrativo-service.service';
 
 @Component({
   selector: 'app-carousel',
@@ -18,6 +19,7 @@ export class CarouselComponent implements OnInit {
   showPassword: boolean = false; // Indicador para mostrar/ocultar la contraseña
 
   private credencialService = inject(CredencialService);
+  private administrativoService = inject(AdministrativoService);
   pantallaCelu: MediaQueryList;
   listaDeCredenciales: any[] = [];
   anchoPantalla: number;
@@ -25,6 +27,7 @@ export class CarouselComponent implements OnInit {
   public dialog = inject(MatDialog);
   public aviso = inject(MatSnackBar); // Para mostrar avisos dinamicos
   contador: number = 0;
+  idAdministrativo!: number;
   
 
   constructor(media: MediaMatcher) {
@@ -38,7 +41,18 @@ export class CarouselComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.obtenerCredencialPorAdministrativo(1);
+    let requestBody ={
+      username: localStorage.getItem('user'),
+    }
+    this.administrativoService.buscarAdministrativoPorUsuario(requestBody).subscribe((data: any) => {
+      console.log("Administrativo", data);
+      if(data.metadata[0].codigo == "00"){
+        this.idAdministrativo = data.administrativoResponse.administrativo[0].idAdministrativo
+        this.obtenerCredencialPorAdministrativo(this.idAdministrativo);
+      }
+    }, (error: any) => {
+      console.log("Error", error);
+    });    
   }
 
   obtenerCredencialPorAdministrativo(idAdministrativo: number): void {
@@ -56,7 +70,12 @@ export class CarouselComponent implements OnInit {
 
         // Agrega la propiedad 'contraVisible' a cada credencial
     this.listaDeCredenciales.forEach(credencial => {
+        
+      const timestamp = credencial.proximaActualizacion;
+      const fecha = new Date(timestamp);
+
       credencial.contraVisible = false;
+      credencial.proximaActualizacion = fecha.toLocaleDateString('es-ES',{ year: 'numeric', month: 'numeric', day: 'numeric' });
     });
 
       let grupo1Credenciales: any[] = [];
@@ -118,7 +137,7 @@ export class CarouselComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result == 1 ){
         this.mostrarAviso("Se guardo la Credencial", "Exito");    
-        this.obtenerCredencialPorAdministrativo(1);    
+        this.obtenerCredencialPorAdministrativo(this.idAdministrativo);    
       }else if(result == 2){
         this.mostrarAviso("Error al guardar la Credencial", "Error");
       }
@@ -133,7 +152,7 @@ export class CarouselComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result == 1 ){
         this.mostrarAviso("Se guardo la Credencial", "Exito");     
-        this.obtenerCredencialPorAdministrativo(1);   
+        this.obtenerCredencialPorAdministrativo(this.idAdministrativo);   
       }else if(result == 2){
         this.mostrarAviso("Error al guardar la Credencial", "Error");
       }
@@ -155,7 +174,7 @@ export class CarouselComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result:any) => {
       if(result == 1){
         this.mostrarAviso("Credencial Eliminada", "Exitosa");
-        this.obtenerCredencialPorAdministrativo(1);  
+        this.obtenerCredencialPorAdministrativo(this.idAdministrativo);  
       } else if (result == 2){
         this.mostrarAviso("Error al eliminar la Credencial", "Error");
       }

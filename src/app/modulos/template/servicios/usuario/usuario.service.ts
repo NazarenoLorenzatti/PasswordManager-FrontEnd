@@ -25,6 +25,19 @@ export class UsuarioService {
     const endpoint = `${base_url}/subir-foto-perfil`;
     return this.http.post(endpoint, formData, { headers });
   }
+  
+  eliminarUsuario(body: any){
+    const headers = {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    };
+    const endpoint = `${base_url}/eliminar-usuario`;
+    return this.http.post(endpoint, body, { headers });
+  }
+
+  guardarUsuario(body: any){    
+    const endpoint = `${base_url}/crear-usuario`;
+    return this.http.post(endpoint, body);
+  }
 
   
 }

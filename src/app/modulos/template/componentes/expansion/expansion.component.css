@@ -1,3 +1,9 @@
+
+h1,p,h2,h3,h4,h5,h6,b {
+    font-family: 'fuentePersonalizada';
+}
+
+
 .mat-mdc-form-field+.mat-mdc-form-field {
     margin-left: 8px;
 }
@@ -27,5 +33,4 @@ a {
 
 mat-panel-title {
     font-size: 22px;
-    text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
 }

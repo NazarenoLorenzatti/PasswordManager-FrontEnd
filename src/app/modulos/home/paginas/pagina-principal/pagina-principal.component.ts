@@ -13,23 +13,22 @@ export class PaginaPrincipalComponent implements OnInit {
   pantallaCelu: MediaQueryList;
   nombre: string = '';
   apellido: string = '';
-  imgPerfil!: any;
+  imgPerfil!: any;  
   
-  
-
   ngOnInit(): void {
-    console.log("TOKEN - PAGINA PRINCIPAL" , localStorage.getItem('token'));
-    this.obtenerAdministrativo(1);
+   this.obtenerAdministrativo();
   }  
 
   constructor(media : MediaMatcher){
     this.pantallaCelu = media.matchMedia('(max-width: 600px)');    
   }
 
-  obtenerAdministrativo(idAdministrativo: number): void{
-    this.administrativoService.buscarAdministrativo(idAdministrativo).subscribe((data: any) => {      
+  obtenerAdministrativo(): void{
+    let requestBody ={
+      username: localStorage.getItem('user'),
+    }
+    this.administrativoService.buscarAdministrativoPorUsuario(requestBody).subscribe((data: any) => {      
       this.procesarResponse(data);
-      console.log("ADMINISTRATIVO", data);
     }, (error: any) => {
       console.log("Error", error);
     })
@@ -40,8 +39,12 @@ export class PaginaPrincipalComponent implements OnInit {
     if (resp.metadata[0].codigo == "00") {
       this.nombre = resp.administrativoResponse.administrativo[0].nombre;
       this.apellido = resp.administrativoResponse.administrativo[0].apellido;
-      this.imgPerfil = 'data:image/jpeg;base64,' + resp.administrativoResponse.administrativo[0].usuario.imgPerfil;
-      console.log("NOMBRE DEL ADM", );
+      if(resp.administrativoResponse.administrativo[0].usuario.imgPerfil=== null){
+        this.imgPerfil = null;
+      } else {
+        this.imgPerfil = 'data:image/jpeg;base64,' + resp.administrativoResponse.administrativo[0].usuario.imgPerfil;
+      }
+      
     }
 
   }

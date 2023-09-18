@@ -1,34 +1,29 @@
 <div class="container">
-
-    <div class="titulo">
-      <h3>Login</h3>
-    </div>
-    <div class=" formulario-login">
-      <mat-dialog-content>
-        <form [formGroup]="loginForm">
-          <div class="campo">
-            <mat-form-field>
-              <input matInput placeholder="Usuario" formControlName="username" required />
-            </mat-form-field>
-          </div>
-          <div class="campo">
-            <mat-form-field>
-              <input type="password" matInput placeholder="Contraseña" formControlName="password" required />
-            </mat-form-field>
-          </div>
-        </form>
-      </mat-dialog-content> 
-
-     
-        <mat-dialog-actions>
-          <button mat-button color="primary" (click)="onSubmit()">
-            <mat-icon>save</mat-icon> Login
-          </button>
-        </mat-dialog-actions>
-     
-
-    </div>
-
-   
-
+  <div class="titulo">
+    <mat-card color="primary" class="card">
+      <mat-card-content>
+        <b>ULTRA FIBRA</b>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <mat-card class="formulario-login">
+    <mat-dialog-content>
+      <form [formGroup]="loginForm">
+        <mat-form-field>
+          <input matInput placeholder="Usuario" formControlName="username" required />
+        </mat-form-field>
+        <mat-form-field>
+          <input type="password" matInput placeholder="Contraseña" formControlName="password" required />
+        </mat-form-field>
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button color="accent" mat-raised-button  (click)="onSubmit()">
+        <mat-icon>play_for_work</mat-icon> Login
+      </button>
+      <button color="primary" class="registrarse" mat-button (click)="signUp()">
+        <mat-icon>perm_identity</mat-icon> Registrarse
+      </button>
+    </mat-dialog-actions>
+  </mat-card>
 </div>

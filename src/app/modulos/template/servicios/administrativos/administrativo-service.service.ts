@@ -26,6 +26,14 @@ export class AdministrativoService {
     return this.http.get(endpoint, { headers });
   } 
 
+  buscarAdministrativoPorUsuario(body: any){
+    const headers = {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    };
+    const endpoint = `${base_url}/buscar-administrativo-usuario`;
+    return this.http.post(endpoint, body , { headers });
+  } 
+
   editarAdministrativo(body: any){
     const headers = {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
@@ -38,7 +46,7 @@ export class AdministrativoService {
     const headers = {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     };
-    const endpoint = `${base_url}/crear-administrativos`;
+    const endpoint = `${base_url}/crear-administrativo`;
     return this.http.post(endpoint, body, { headers });
   }
 

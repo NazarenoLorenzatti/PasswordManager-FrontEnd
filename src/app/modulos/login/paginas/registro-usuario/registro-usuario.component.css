@@ -1,0 +1,60 @@
+mat-dialog-content{
+    display: block;
+    width: 80%;
+}
+
+mat-form-field{
+    display: inline;
+    margin: 10px;
+}
+
+h3{
+    margin-bottom: 25px;
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    color: #000;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2e3f4f;
+}
+
+.formulario-login{
+    background-color: #fff;
+    border: 4px solid #045358;
+    display: flex;
+    width: 40%;
+    height: 80%;
+    padding-top: 15px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.9);
+}
+
+.titulo{
+    color: #121b26;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 10%;
+    margin-bottom: 25px;
+}
+
+mat-card{
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.9);
+    background-color: #fff;
+    border: 4px solid #045358;
+    font-size: 30px;
+    width: 100%;
+    align-items: center;
+}
+
+mat-dialog-actions{
+    margin-top: 20px;
+}
+
+

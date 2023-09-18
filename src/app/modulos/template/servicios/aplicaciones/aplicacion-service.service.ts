@@ -33,11 +33,11 @@ export class AplicacionService {
     return this.http.get(endpoint, { headers });
   }
 
-  saveAplicacion(body: any){
+  saveAplicacion(body: any, username: string){
     const headers = {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     };
-    const endpoint = `${base_url}/guardar-aplicacion`;
+    const endpoint = `${base_url}/guardar-aplicacion/${username}`;
     return this.http.post(endpoint, body, { headers });
   }
   

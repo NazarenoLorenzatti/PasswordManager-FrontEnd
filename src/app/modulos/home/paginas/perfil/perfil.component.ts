@@ -1,5 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AdministrativoService } from 'src/app/modulos/template/servicios/administrativos/administrativo-service.service';
 import { UsuarioService } from 'src/app/modulos/template/servicios/usuario/usuario.service';
 
@@ -12,6 +13,7 @@ export class PerfilComponent implements OnInit {
 
   private administrativoService = inject(AdministrativoService);
   private usuarioService = inject(UsuarioService);
+  private router = inject(Router);
 
   perfilForm!: FormGroup;
   private fb = inject(FormBuilder);
@@ -33,15 +35,20 @@ export class PerfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.obtenerAdministrativo(1);
+    this.obtenerAdministrativo();
   }
 
-  obtenerAdministrativo(idAdministrativo: number): void {
-    this.administrativoService.buscarAdministrativo(idAdministrativo).subscribe((data: any) => {
+  obtenerAdministrativo(): void{
+    let requestBody ={
+      username: localStorage.getItem('user'),
+    }
+    this.administrativoService.buscarAdministrativoPorUsuario(requestBody).subscribe((data: any) => {      
       this.procesarResponse(data);
+      console.log("ADMINISTRATIVO", data);
     }, (error: any) => {
       console.log("Error", error);
-    });
+    })
+
   }
 
   procesarResponse(resp: any) {
@@ -53,18 +60,30 @@ export class PerfilComponent implements OnInit {
       this.idUsuario = resp.administrativoResponse.administrativo[0].usuario.idUsuario;
       this.username = resp.administrativoResponse.administrativo[0].usuario.username;
       this.password = resp.administrativoResponse.administrativo[0].usuario.password;
-      this.imgPerfil = 'data:image/jpeg;base64,' + resp.administrativoResponse.administrativo[0].usuario.imgPerfil;
+      if(resp.administrativoResponse.administrativo[0].usuario.imgPerfil=== null){
+        this.imgPerfil = null;
+      } else {
+        this.imgPerfil = 'data:image/jpeg;base64,' + resp.administrativoResponse.administrativo[0].usuario.imgPerfil;
+      }
     }
 
     this.perfilForm = this.fb.group({
       id: [this.idUsuario],
       username: [this.username, Validators.required],
-      password: [this.password, Validators.required]
+      password: ['', Validators.required]
     });
   }
 
   eliminarUsuario() {
-
+    let datosBody = {     
+      username: localStorage.getItem('user'),
+    }
+    this.usuarioService.eliminarUsuario(datosBody).subscribe((data: any) => {
+      localStorage.removeItem('token');    
+      this.router.navigate(['/login']);
+    }), (error: any) => {
+      console.log("Error");
+    } 
   }
 
   actualizarUsuario() {
@@ -97,14 +116,6 @@ export class PerfilComponent implements OnInit {
     this.editar = false;
   }
 
-  mostrarContra() {
-    this.contraVisible = true;
-  }
-
-  ocultarContra() {
-    this.contraVisible = false;
-  }
-
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0] ?? null;     
   }
@@ -118,7 +129,7 @@ export class PerfilComponent implements OnInit {
       this.usuarioService.subirFoto(formData).subscribe((resp: any) => {
       console.log('Imagen guardada con éxito en el servidor');
       });  
-      this.obtenerAdministrativo(1);
+      this.obtenerAdministrativo();
   }  
 
 }

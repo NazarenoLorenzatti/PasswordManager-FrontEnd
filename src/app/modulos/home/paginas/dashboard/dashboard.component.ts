@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 
 
@@ -10,12 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { 
-    
-  }
+  private router = inject(Router);
+
+  constructor() { }
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('token'));
+    this.router.navigate(['/home/pagina-principal']);
   }
 
 }

@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditarAplicacionModalComponent } from 'src/app/modulos/home/paginas/aplicaciones/editar-aplicacion-modal/editar-aplicacion-modal.component';
 import { NuevaAplicacionModalComponent } from 'src/app/modulos/home/paginas/aplicaciones/nueva-aplicacion-modal/nueva-aplicacion-modal.component';
 import { ConfirmComponent } from '../confirmacion/confirm/confirm.component';
+import { AdministrativoService } from '../../servicios/administrativos/administrativo-service.service';
 
 /**
  * @title Flex table where one column's cells has a greater height than others.
@@ -18,6 +19,7 @@ import { ConfirmComponent } from '../confirmacion/confirm/confirm.component';
 export class TablaComponent implements OnInit {
 
   private aplicacionService = inject(AplicacionService); 
+  private administrativoService = inject(AdministrativoService);
   public dialog = inject(MatDialog);
   public aviso = inject(MatSnackBar); // Para mostrar avisos dinamicos
 
@@ -25,7 +27,7 @@ export class TablaComponent implements OnInit {
   dataSource = new MatTableDataSource<AplicacionElement>();
 
   ngOnInit(): void {
-    this.listarAplicaciones();
+    this.obtenerAplicacionsPorAdministrativo();
   }
 
   abrirModal(id:number, nombre: string , url: string): void {  
@@ -41,7 +43,7 @@ export class TablaComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result == 1 ){
         this.mostrarAviso("Se guardo la Aplicacion", "Exito");
-        this.listarAplicaciones();
+        this.obtenerAplicacionsPorAdministrativo();
       }else if(result == 2){
         this.mostrarAviso("Error al guardar la Aplicacion", "Error");
       }
@@ -54,18 +56,24 @@ export class TablaComponent implements OnInit {
     })
   }
 
-  listarAplicaciones(): void {
-    this.aplicacionService.getAplicaciones().subscribe((data: any) => {
-      this.procesarResponse(data);  
+
+  obtenerAplicacionsPorAdministrativo(): void{
+    let requestBody ={
+      username: localStorage.getItem('user'),
+    }
+    this.administrativoService.buscarAdministrativoPorUsuario(requestBody).subscribe((data: any) => {      
+      this.procesarResponse(data);
+      console.log("ADMINISTRATIVO", data);
     }, (error: any) => {
       console.log("Error", error);
     })
-  }
 
+  }
+ 
   procesarResponse(resp: any) {
     const dataAplicaciones: AplicacionElement[] = [];
     if (resp.metadata[0].codigo == "00") {
-      let listaDeAplicaciones = resp.aplicacionResponse.aplicacion;
+      let listaDeAplicaciones = resp.administrativoResponse.administrativo[0].aplicaciones;
       listaDeAplicaciones.forEach((element: AplicacionElement) => {        
         dataAplicaciones.push(element);
       });      
@@ -82,7 +90,7 @@ export class TablaComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result:any) => {
       if(result == 1){
         this.mostrarAviso("Aplicacion Eliminada", "Exitosa");
-        this.listarAplicaciones(); 
+        this.obtenerAplicacionsPorAdministrativo();
       } else if (result == 2){
         this.mostrarAviso("Error al eliminar aplicacion", "Error");
       }

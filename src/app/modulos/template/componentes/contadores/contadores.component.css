@@ -1,3 +1,9 @@
+
+h1,p,h2,h3,h4,h5,h6,b {
+  font-family: 'fuentePersonalizada';
+}
+
+
 .container-contadores {
   padding: 30px 50px 50px 50px;
   margin-top: 0px;
@@ -28,15 +34,15 @@ h5{
 }
 
 .violeta{
-  border-color: #7b1fa2;
+  border-color: #2C3333;
 }
 
 .verde{
-  border-color: #4e096c;
+  border-color: #0E8388;
 }
 
 .rojo{
-  border-color: #ba64de;
+  border-color: #CBE4DE;
 }
 
 .contador-numero {

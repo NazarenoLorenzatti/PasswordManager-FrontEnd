@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Modulos creado por mi
 import { LoginModule } from './modulos/login/login.module';
 import { HomeModule } from './modulos/home/home.module';
-import { empty } from 'rxjs';
 
 
 //I keep the new line

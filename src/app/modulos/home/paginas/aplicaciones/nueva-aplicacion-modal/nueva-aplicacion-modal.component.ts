@@ -16,7 +16,7 @@ export class NuevaAplicacionModalComponent implements OnInit {
   private fb = inject(FormBuilder);
   private aplicacionService = inject(AplicacionService);
   private dialogRef = inject(MatDialogRef);
-  private administrativo! : any;
+  private administrativo!: any;
 
   constructor() { }
 
@@ -29,28 +29,32 @@ export class NuevaAplicacionModalComponent implements OnInit {
   }
 
   onSave() {
-    let datosBody = {
-      nombreAplicacion: this.aplicacionForm.get('nombre')?.value,
-      url: this.aplicacionForm.get('url')?.value,
-      administrativos: this.administrativo
+    let username = localStorage?.getItem('user');
+    if (username !== null) {
+      let datosBody = {
+        nombreAplicacion: this.aplicacionForm.get('nombre')?.value,
+        url: this.aplicacionForm.get('url')?.value,
+        administrativos: this.administrativo
+      }
+      this.aplicacionService.saveAplicacion(datosBody, username).subscribe((data: any) => {
+        this.dialogRef.close(1);
+      }), (error: any) => {
+        this.dialogRef.close(2);
+      }
+    }else {      
+      console.error("El valor de 'username' es nulo en localStorage.");
     }
-    this.aplicacionService.saveAplicacion(datosBody).subscribe((data: any) => {
-            this.dialogRef.close(1);
-    }), (error: any) => {
-      this.dialogRef.close(2);
-    }
-
   }
 
-  onCancel(){
+  onCancel() {
     this.dialogRef.close(3);
   }
 
-  obtenerAdministrativo(idAdministrativo: number): any{
-    this.administrativoService.buscarAdministrativo(idAdministrativo).subscribe((data: any) => {      
+  obtenerAdministrativo(idAdministrativo: number): any {
+    this.administrativoService.buscarAdministrativo(idAdministrativo).subscribe((data: any) => {
       if (data.metadata[0].codigo == "00") {
-      this.administrativo = data.administrativoResponse.administrativo[0];
-      console.log(this.administrativo);
+        this.administrativo = data.administrativoResponse.administrativo[0];
+        console.log(this.administrativo);
       }
     }, (error: any) => {
       console.log("Error", error);

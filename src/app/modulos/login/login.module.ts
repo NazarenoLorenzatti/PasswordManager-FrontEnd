@@ -7,12 +7,14 @@ import { RegistroUsuarioComponent } from './paginas/registro-usuario/registro-us
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../template/material.module';
 import { AutenticacionComponent } from './paginas/segundo-factor/autenticacion/autenticacion.component';
+import { CrearAdministrativoComponent } from './paginas/crear-administrativo/crear-administrativo.component';
 
 @NgModule({
   declarations: [
     PaginaLoginComponent,
     RegistroUsuarioComponent,
-    AutenticacionComponent   
+    AutenticacionComponent,
+    CrearAdministrativoComponent   
   ],
   imports: [
     CommonModule,

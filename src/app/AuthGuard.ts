@@ -1,6 +1,6 @@
 // auth.guard.ts
 import { Injectable, inject } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivateFn, Router, RouterStateSnapshot } from '@angular/router';
 import jwt_decode from 'jwt-decode';
 
 @Injectable({
@@ -9,7 +9,6 @@ import jwt_decode from 'jwt-decode';
 class PermissionsService {
 
   constructor(private router: Router) { }
-
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     const token = localStorage.getItem('token');
@@ -31,7 +30,6 @@ class PermissionsService {
       const segundos = parseInt(horaMinSeg[2], 10);
 
       const fechaExpiracion = new Date(anio, mes, dia, hora, minutos, segundos);
-      //const fechaActual = new Date();
 
       if(fechaExpiracion > new Date()){
         return true;
@@ -61,30 +59,3 @@ class PermissionsService {
 export const AuthGuard: CanActivateFn = (next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean => {
   return inject(PermissionsService).canActivate(next, state);
 }
-
-
-
-/*@Injectable({
-  providedIn: 'root',
-})
-export class AuthGuard implements CanActivate {
-  constructor(private router: Router) { }
-
-  canActivate(): boolean {
-    const token = localStorage.getItem('token');
-    const expirationDateStr = localStorage.getItem('expires');
-
-    if (token && expirationDateStr) {
-      const expirationDate = new Date(expirationDateStr);
-
-      if (expirationDate > new Date()) {
-        return true;
-      }
-
-    }
-    this.router.navigate(['/login']);
-    return false;
-
-  }
-}
-*/

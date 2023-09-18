@@ -49,15 +49,17 @@
                     </div>
                 </div>
                 <mat-divider></mat-divider>
-                <a mat-list-item [routerLink]="nav.ruta" *ngFor="let nav of menuNav">
+                <div class="botones">
+                <button class="btn" mat-button [routerLink]="nav.ruta" *ngFor="let nav of menuNav">
                     <mat-icon class="icono"> {{nav.icono}}</mat-icon>
                     {{nav.name}}
-                </a>
-
-                <button class="cerrar-sesion" mat-button color="primary" (click)="logout()">
-                    <mat-icon class="icono" color="primary"> exit_to_app</mat-icon>
+                </button>
+            
+                <button class="btn" mat-button color="warn" (click)="logout()">
+                    <mat-icon class="icono" color="warn"> exit_to_app</mat-icon>
                     Cerrar Sesion
                 </button>
+            </div>
 
             </mat-nav-list>
         </mat-sidenav>

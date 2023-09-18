@@ -27,7 +27,7 @@ export class AplicacionesComponent {
     dialogRef.afterClosed().subscribe(result => {
       if(result == 1 ){
         this.mostrarAviso("Se guardo la Aplicacion", "Exito");
-        this.tablaComponent.listarAplicaciones();
+        this.tablaComponent.obtenerAplicacionsPorAdministrativo();
       }else if(result == 2){
         this.mostrarAviso("Error al guardar la Aplicacion", "Error");
       }

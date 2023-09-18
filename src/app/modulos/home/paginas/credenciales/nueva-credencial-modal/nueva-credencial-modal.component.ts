@@ -22,10 +22,9 @@ export class NuevaCredencialModalComponent implements OnInit {
   private credencialService = inject(CredencialService);
   private dialogRef = inject(MatDialogRef);
   
-  ngOnInit(): void {
-    
-    this.obtenerAdministrativo(1);
-    this.listarAplicaciones();
+  ngOnInit(): void {    
+    this.obtenerAdministrativo();
+    this.obtenerAplicacionsPorAdministrativo;
     this.credencialForm = this.fb.group({
       idAplicacion: ['', Validators.required],
       usuarioAplicacion: ['', Validators.required],
@@ -51,35 +50,41 @@ export class NuevaCredencialModalComponent implements OnInit {
     this.dialogRef.close(3);
   }
 
-  listarAplicaciones(): void {
-    this.aplicacionService.getAplicaciones().subscribe((data: any) => {
+  obtenerAplicacionsPorAdministrativo(): void{
+    let requestBody ={
+      username: localStorage.getItem('user'),
+    }
+    this.administrativoService.buscarAdministrativoPorUsuario(requestBody).subscribe((data: any) => {      
       this.procesarResponse(data);
     }, (error: any) => {
       console.log("Error", error);
     })
+
   }
 
   procesarResponse(resp: any) {
     const dataAplicaciones: AplicacionElement[] = [];
     if (resp.metadata[0].codigo == "00") {
-      let listaDeAplicaciones = resp.aplicacionResponse.aplicacion;
+      this.administrativo = resp.administrativoResponse.administrativo[0];
+      let listaDeAplicaciones = resp.administrativoResponse.administrativo[0].aplicaciones; 
       listaDeAplicaciones.forEach((element: AplicacionElement) => {
-        console.log("ELEMENTO",element);
         dataAplicaciones.push(element);
       });
       this.listaDeAplicaciones = dataAplicaciones;
     }
   }
 
-  obtenerAdministrativo(idAdministrativo: number): any{
-    this.administrativoService.buscarAdministrativo(idAdministrativo).subscribe((data: any) => {      
-      if (data.metadata[0].codigo == "00") {
-      this.administrativo = data.administrativoResponse.administrativo[0];
-      console.log(this.administrativo);
-      }
+  obtenerAdministrativo(): void{
+    let requestBody ={
+      username: localStorage.getItem('user'),
+    }
+    this.administrativoService.buscarAdministrativoPorUsuario(requestBody).subscribe((data: any) => {      
+      this.procesarResponse(data);
     }, (error: any) => {
       console.log("Error", error);
-    });
+    })
+
+
   }
 
 }

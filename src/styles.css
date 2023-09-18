@@ -1,2 +1,11 @@
 
+@font-face {
+    font-family: 'fuentePersonalizada';
+    src: url('./assets/font/Grandstander-Regular.ttf');
+}
+
+
+h1,p,h2,h3,h4,h5,h6,b {
+    font-family: 'fuentePersonalizada';
+}
 

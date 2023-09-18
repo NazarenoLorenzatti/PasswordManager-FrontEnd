@@ -1,3 +1,9 @@
+
+h1,p,h2,h3,h4,h5,h6,b {
+    font-family: 'fuentePersonalizada';
+}
+
+
 p,
 h3 {
     display: inline;
@@ -9,9 +15,13 @@ p{
     font-size: 20px;
 }
 
+.value-user{
+    text-align: end;
+}
+
 h3{
     text-decoration: underline;
-    text-decoration-color: #4e2694;
+    text-decoration-color: 0E8388;
     text-underline-offset: 6px;
     font-size: 22px;
     letter-spacing: 2px;
@@ -32,7 +42,8 @@ mat-card-title{
     font-size: 30px;
     letter-spacing: 2px;
     margin-bottom: 10px;
-    color: #4e2694;
+    font-weight: bolder;
+    color: #0E8388;
 }
 
 mat-card-header {
@@ -58,6 +69,7 @@ mat-card-actions{
     margin-left: 30%;
     order: 1;
     margin-bottom: 12px;
+    align-items: flex-end;
 }
 
 .contra {
@@ -72,7 +84,7 @@ mat-card-actions{
     font-style: italic;
     font-size: 25px;
     text-decoration: underline;
-    text-decoration-color: #4e2694;
+    text-decoration-color: #0E8388;
     text-underline-offset: 4px;
 }
 
@@ -82,10 +94,23 @@ mat-card-actions{
     align-items: center;
 }
 
+@media screen and (max-width: 1000px) {
+
+    h3{
+        display: none;
+    }
+}
+
 @media screen and (max-width: 700px) {
 
     h3{
         display: none;
+    }
+
+    .label{
+        letter-spacing: 1px;
+        font-style: italic;
+        font-size: 14px;
     }
 
     .usuario {

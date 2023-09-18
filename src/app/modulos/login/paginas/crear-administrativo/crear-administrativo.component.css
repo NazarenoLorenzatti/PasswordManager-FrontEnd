@@ -9,24 +9,26 @@
 }
 
 .titulo{
-    color: #ddd;
+    color: #121b26;
     margin-bottom: 6vh;
     width: 30%;
 }
 
+
+
 .card{
     background-color: #fff;
+    border: 4px solid #045358;
     text-align: center;
-    padding: 20px;
-    font-size: 60px;
-    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    font-size: 40px;
 }
 
 .formulario-login{
     background-color: #fff;
     border: 4px solid #045358;
     width: 30%;
-    height: 60%;
+    height: 80%;
     box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.8);
     display: flex;
     justify-content: center;
@@ -40,7 +42,7 @@ mat-dialog-content
     justify-content: center;
     align-items: center;
     width: 80%;
-    height: 40%;
+    height: 70%;
 }
 
 form{
@@ -49,4 +51,8 @@ form{
 
 mat-form-field{
     display: inline;
+}
+
+.registrarse{
+    margin-left: 20px;
 }

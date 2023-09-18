@@ -1,1 +1,38 @@
-<p>FORMULARIO PARA EL REGISTRO DE UN NUEVO USUARIO</p>
+<div class="container">
+    <div class="titulo">
+      <mat-card >
+        <mat-card-content><b>Registrar Usuario</b></mat-card-content>
+      </mat-card>      
+    </div>
+    <div class=" formulario-login">
+      <mat-dialog-content>
+        <form [formGroup]="registerForm">
+          <div class="campo">
+            <mat-form-field>
+              <input matInput placeholder="Ingrese un nombre de Usuario" formControlName="username" required />
+            </mat-form-field>
+          </div>
+          <div class="campo">
+            <mat-form-field>
+              <input type="password" matInput placeholder="Ingrese su Contraseña" formControlName="password" required />
+              <mat-icon matSuffix color="warn" *ngIf="registerForm.get('password')?.value !== registerForm.get('confirmPassword')?.value">highlight_off</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="campo">
+            <mat-form-field>
+              <input type="password" matInput placeholder="Confirme su Contraseña" formControlName="confirmPassword" required />                         
+              <mat-icon matSuffix color="warn" *ngIf="registerForm.get('password')?.value !== registerForm.get('confirmPassword')?.value">highlight_off</mat-icon>
+              <mat-hint color="warn" *ngIf="registerForm.get('password')?.value !== registerForm.get('confirmPassword')?.value" class="error-message">
+                <b style="color: rgb(56, 0, 0)">Las contraseñas no coinciden.</b>
+            </mat-hint>
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-dialog-content>    
+        <mat-dialog-actions>
+            <button id="btn-submit" mat-raised-button color="primary" (click)="onSubmit()" [disabled]="registerForm.invalid || registerForm.hasError('passwordMismatch')">
+                <mat-icon>play_for_work</mat-icon> Registrar Usuario
+              </button>              
+        </mat-dialog-actions>
+    </div> 
+</div>

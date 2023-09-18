@@ -50,11 +50,14 @@ export class SidenavComponent {
   }
 
   ngOnInit(): void{
-    this.obtenerAdministrativo(1);
+    this.obtenerAdministrativo();
   }
 
-  obtenerAdministrativo(idAdministrativo: number): void{
-    this.administrativoService.buscarAdministrativo(idAdministrativo).subscribe((data: any) => {      
+  obtenerAdministrativo(): void{
+    let requestBody ={
+      username: localStorage.getItem('user'),
+    }
+    this.administrativoService.buscarAdministrativoPorUsuario(requestBody).subscribe((data: any) => {      
       this.procesarResponse(data);
       console.log("ADMINISTRATIVO", data);
     }, (error: any) => {
@@ -71,7 +74,11 @@ export class SidenavComponent {
       this.telefono = resp.administrativoResponse.administrativo[0].telefono;
       this.username = resp.administrativoResponse.administrativo[0].usuario.username;
       this.password = resp.administrativoResponse.administrativo[0].usuario.password;
-      this.imgPerfil = 'data:image/jpeg;base64,' + resp.administrativoResponse.administrativo[0].usuario.imgPerfil;
+      if(resp.administrativoResponse.administrativo[0].usuario.imgPerfil=== null){
+        this.imgPerfil = null;
+      } else {
+        this.imgPerfil = 'data:image/jpeg;base64,' + resp.administrativoResponse.administrativo[0].usuario.imgPerfil;
+      }
     }
   }
 
